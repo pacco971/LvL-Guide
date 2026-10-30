@@ -2,6 +2,23 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.5.0] – 2026-10-30
+
+### Neu
+
+- Eigener verschiebbarer Navigations-HUD mit Richtungsanzeige und dynamischem Ziel.
+- Distanz- und ETA-Schätzung für den aktuellen Quest-Wegpunkt.
+- Dynamische Ziel-Linie und Zielpunkt auf der Minimap.
+- Navigation im Einstellungen-Tab ein- und ausschaltbar.
+- Navigation nutzt Questgeber-, Ziel- und Abgabe-Wegpunkte abhängig vom aktuellen Queststatus.
+- Evergreen-Routen liefern auch ohne aktiven Questlog-Eintrag einen zonenbezogenen Fallback-Wegpunkt.
+
+### Design
+
+- Eigene ForeverPath-Farben und Unicode-Richtungssymbole statt RestedXP-Grafiken.
+- Blizzard-Standard-Textures und unabhängiges ForeverPath-Layout bleiben erhalten.
+- Routenlisten zeigen erledigte, aktuelle und kommende Schritte mit eigenen Statussymbolen.
+
 ## [0.4.0] – 2026-10-30
 
 ### Neu
