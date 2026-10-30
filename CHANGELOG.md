@@ -2,6 +2,24 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.7.0] – 2026-10-30
+
+### Neu
+
+- Zusätzlicher lokaler ForeverDB-Import für Dungeons, Klassen, Berufe und Zonen.
+- Dynamische Route-Recovery bewertet mehrere passende spätere Schritte nach dem aktuellen Score.
+- Weltkarten-Overlay mit Spieler-Ziel-Linie, aktuellem Zielpunkt und kommenden Routenpunkten.
+- Geglättete, spielerorientierte Pfeilrotation und drei kommende Ziele auf der Minimap.
+- Klassen-/Trainerstopp und Berufsdaten-Hinweise im Live-Ratschlag.
+- Dungeon-Score berücksichtigt ForeverDB-Status, Dungeonart, Gruppengröße und heuristischen Gear-/Loot-Bedarf.
+- Reproduzierbarer `tools/import_foreverdb.py`-Importer und `DATA-UPDATE.md` für lokale API-Updates.
+
+### Transparenz
+
+- Loot- und Laufzeitwerte ohne bestätigte API-Daten bleiben ausdrücklich heuristisch.
+- ForeverDB-API-Key wird nur lokal verwendet und ist nicht in ZIP, Addon oder GitHub enthalten.
+- Quellen und Attribution bleiben im Einstellungen-Tab und unter `ExternalData/` sichtbar.
+
 ## [0.6.0] – 2026-10-30
 
 ### Neu
