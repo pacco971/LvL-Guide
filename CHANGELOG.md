@@ -2,6 +2,23 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.6.0] – 2026-10-30
+
+### Neu
+
+- Route-Recovery erkennt passende spätere Schritte in der aktuellen Zone.
+- Neuer „Route sync“-Button im Tracker.
+- Session-Tracker mit XP/h, Laufzeit, Level-Fortschritt und Todesfällen.
+- Ausrüstungszustand und mögliche Questbelohnungs-Upgrades im Live-Ratschlag.
+- Dungeon-Empfehlung nach Level, Gruppenzustand und Rolle.
+- Daten- und Performance-Cache für zonenbezogene Evergreen-Wegpunkte.
+
+### Verbesserungen
+
+- XP- und Level-Events aktualisieren Fortschritt und Empfehlungen live.
+- Inventaränderungen lösen eine neue Analyse der Ausrüstung aus.
+- Die Navigation bleibt auch bei übersprungenen Questschritten handlungsfähig.
+
 ## [0.5.0] – 2026-10-30
 
 ### Neu
