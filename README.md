@@ -6,23 +6,26 @@ ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, be
 
 ## Installation
 
-1. Lade die Datei [`ForeverPath.zip`](./ForeverPath.zip) herunter.
-2. Öffne den ZIP-Ordner und entpacke den enthaltenen Ordner `ForeverPath`.
-3. Kopiere den kompletten Ordner nach:
+1. Öffne auf GitHub die Repository-Seite und klicke auf **Code → Download ZIP**. Dadurch wird `LvL-Guide-main.zip` heruntergeladen.
+2. Entpacke `LvL-Guide-main.zip` zunächst. Darin liegt die Datei `ForeverPath.zip`.
+3. Öffne/entpacke jetzt auch `ForeverPath.zip`. Erst darin liegt der eigentliche Ordner `ForeverPath` mit der Datei `ForeverPath.toc`.
+4. Kopiere den kompletten Ordner `ForeverPath` nach:
 
    ```text
-   <WoW-Forever-Ordner>/_classic_beta_/Interface/AddOns/
+   <WoW-Forever-Ordner>/_forever_/Interface/AddOns/
    ```
 
    Danach muss die Datei `ForeverPath.toc` direkt hier liegen:
 
    ```text
-   .../_classic_beta_/Interface/AddOns/ForeverPath/ForeverPath.toc
+   .../_forever_/Interface/AddOns/ForeverPath/ForeverPath.toc
    ```
 
-4. Starte WoW Forever und öffne die Addon-Auswahl am Charakterbildschirm.
-5. Aktiviere **ForeverPath**. Falls der Client es anbietet, kannst du „Veraltete Addons laden“ aktivieren.
-6. Im Spiel findest du das verschiebbare ForeverPath-Symbol an der Minimap. Linksklick öffnet das Menü, Ziehen verschiebt das Symbol.
+5. Starte WoW Forever und öffne die Addon-Auswahl am Charakterbildschirm.
+6. Aktiviere **ForeverPath**. Falls der Client es anbietet, kannst du „Veraltete Addons laden“ aktivieren.
+7. Im Spiel findest du das verschiebbare ForeverPath-Symbol an der Minimap. Linksklick öffnet das Menü, Ziehen verschiebt das Symbol.
+
+**Wichtig:** Am Ende darf der Pfad nicht doppelt verschachtelt sein. Falsch wäre zum Beispiel `AddOns/ForeverPath.zip/ForeverPath` oder `AddOns/ForeverPath/ForeverPath/ForeverPath.toc`.
 
 ## Bedienung im Spiel
 

@@ -2,6 +2,13 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.7.2] – 2026-10-30
+
+### Dokumentation
+
+- GitHub-Installationsanleitung korrigiert: `LvL-Guide-main.zip` entpacken, darin `ForeverPath.zip` entpacken und erst danach den Ordner `ForeverPath` nach `_forever_/Interface/AddOns/` kopieren.
+- Verschachtelte Fehlpfade wie `AddOns/ForeverPath/ForeverPath/` und das direkte Kopieren der ZIP werden ausdrücklich erklärt.
+
 ## [0.7.1] – 2026-10-30
 
 ### Verbesserungen
