@@ -2,6 +2,28 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.8.0] – 2026-10-30
+
+### Quest- und Routenlogik
+
+- Quest-ID-Datenbank mit NPC-, Ziel-, Abgabe- und Folgequest-Hinweisen aus dem lokalen ForeverDB-Import.
+- Tracker zeigt echte Live-Questobjektive, Restziele und „Quest kann abgegeben werden“.
+- Automatisches Weiterblättern über mehrere bereits erfüllte Schritte.
+- Route-Recovery 2.0 bewertet Zonen-Treffer und Score-Alternativen für übersprungene Schritte.
+
+### UI, Gear und Stopps
+
+- Tracker einklappbar und skalierbar; Quest-Fortschrittsbalken ergänzt.
+- Fensterpositionen werden gespeichert; Tracker, Pfeil und Hauptmenü lassen sich skalieren, sperren, dimmen und im Minimalmodus betreiben.
+- Gear-Bewertung unterstützt Auto-, DPS-, Tank- und Heilerprofile.
+- Trainer-, Berufs-, Gasthof-, Flugpunkt-, Reparatur- und Hauptstadtstopps werden als Empfehlungen eingeplant.
+- Diagnosefenster exportiert einen kopierbaren Fehlerbericht für Discord.
+
+### Datenstatus
+
+- Datenstatus zeigt ForeverDB-Build, importierte Questanzahl und den Offline-Charakter des Addons.
+- API-Key bleibt außerhalb des Addons; die Prüfung neuer Daten erfolgt weiterhin über den lokalen Importer.
+
 ## [0.7.2] – 2026-10-30
 
 ### Dokumentation

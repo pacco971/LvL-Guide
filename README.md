@@ -36,6 +36,13 @@ ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, be
 - **Route sync:** findet nach einem übersprungenen Schritt automatisch einen passenden Schritt in der aktuellen Zone
 - **Jetzt analysieren:** startet den Quest- und Routen-Scan sofort
 - Automatischer Scan beim Login und anschließend alle fünf Minuten
+- Quest-ID-Verknüpfung mit NPC, Ziel, Abgabe, Folgequest und Live-Objektiven
+- Tracker-Fortschrittsbalken, Restziele, Einklappen und Skalierung
+- automatische Route-Recovery, erledigte-Schritte-Überspringen und Score-Alternativen
+- Trainer-, Berufs-, Gasthof-, Flugpunkt-, Reparatur- und Hauptstadtstopp-Empfehlungen
+- Gear-Profile für Auto, DPS, Tank und Heiler sowie Questbelohnungs-Vergleich
+- gespeicherte Fensterpositionen, UI-Sperre, Transparenz, Schriftgröße und Minimalmodus
+- Fehlerbericht-Export für Discord und Datenstatus mit ForeverDB-Build
 
 Die Bedienung läuft vollständig über das verschiebbare Minimap-Symbol, den Tracker und die sichtbaren Buttons im Menü. Chatbefehle sind nicht erforderlich.
 
