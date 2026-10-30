@@ -2,6 +2,14 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.7.1] – 2026-10-30
+
+### Verbesserungen
+
+- Slashcommands vollständig entfernt.
+- Bedienung ist jetzt ausschließlich über Minimap-Icon, Tracker und Menübuttons möglich.
+- Installations- und Addon-README entsprechend aktualisiert.
+
 ## [0.7.0] – 2026-10-30
 
 ### Neu

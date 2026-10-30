@@ -34,16 +34,7 @@ ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, be
 - **Jetzt analysieren:** startet den Quest- und Routen-Scan sofort
 - Automatischer Scan beim Login und anschließend alle fünf Minuten
 
-Die Chatbefehle bleiben optional:
-
-```text
-/fp
-/fp next
-/fp prev
-/fp scan
-/fp data
-/fp reset
-```
+Die Bedienung läuft vollständig über das verschiebbare Minimap-Symbol, den Tracker und die sichtbaren Buttons im Menü. Chatbefehle sind nicht erforderlich.
 
 ## Was das Addon bewertet
 
