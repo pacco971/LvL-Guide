@@ -2,6 +2,21 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.9.1] – 2026-10-31
+
+### Route 1.0 und Navigation
+
+- Questplanung bevorzugt die aktuelle Zone und den aktuellen Kartenbereich; aktive Quests, Abgaben und Folgequests stehen vor entfernten Annahmen.
+- Fraktions-, Klassen-, Vorquest- und Levelprüfung verschärft; fremde Gebiete werden nur noch als begründete Ausweichroute behalten.
+- Reisehinweise unterscheiden Fußweg/Reittier, Flugpunkt, Hearthstone, Boot/Zeppelin und Klassenreise. Nicht messbare Flug-/Bootszeiten bleiben ausdrücklich Schätzungen.
+- Navigations-HUD zeigt zusätzliche Zielarten für Gegner und Items; Wegpunktlisten und Weltkartenpunkte werden gecacht.
+
+### Gear, UI und Performance
+
+- Belohnungsvergleich berücksichtigt Zweihandwaffen, Main-/Offhand, Ringe und Schmuck getrennt und wartet auf vollständig geladene Itemdaten.
+- Questketten, Folgequests, Quest-ID/Quelle, Zonenfortschritt und dynamische Routenalternativen sind im Route-Tab sichtbar.
+- Kompakt- und Streamer-Layouts ergänzt; wiederkehrende Questplan-, Reward- und Wegpunktberechnungen werden zwischengespeichert.
+
 ## [0.9.0] – 2026-10-31
 
 ### Questplanung und Navigation
