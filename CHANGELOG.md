@@ -2,6 +2,28 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.9.0] – 2026-10-31
+
+### Questplanung und Navigation
+
+- QuestPlanner erstellt aus dem lokalen Datenstand eigene Annahme-, Ziel- und Abgabeschritte mit Quest-ID, Folgequest, Filtern und sichtbarer Quelle.
+- Live-Questlog, Questobjektive, Folgequests und bereits abgegebene Quests werden automatisch in die aktive Reihenfolge einbezogen.
+- Schritt überspringen, Route-Recovery und Rückkehr zur Hauptstrecke sind direkt über Tracker und Menü erreichbar.
+- Navigations-HUD kennzeichnet NPC, Ziel und Abgabe; Minimap-Route und Weltkartenpunkte bleiben erhalten. Die Entfernung wird korrekt als relative Kartenstrecke ausgewiesen.
+
+### Gear, UI und Komfort
+
+- Neuer Tab **Gear & Rewards** mit Slotübersicht, Gear-Profilen und Questbelohnungs-Vergleich nach vollständig geladenen Itemdaten.
+- Waffen-, Tank-, Heiler-, DPS- und Solo-Gewichtungen werden getrennt behandelt; fehlende oder noch ladende Items werden sichtbar markiert.
+- Ersteinrichtung mit erkannter Klasse/Fraktion, Standardpositionen und Datenstand.
+- Einstellungen, Datenquellen und Supportfunktionen bleiben ohne Chatbefehle über Minimap-Icon und Buttons erreichbar.
+
+### Stabilität und Daten
+
+- Legacy-Questlog-Fallback robuster gemacht und Questkettenfelder aus dem offenen Import erhalten.
+- Session-, Gruppen-, Trainer-, Berufs- und Itemdaten werden weiter lokal gemessen; nicht verfügbare Werte bleiben als Schätzung gekennzeichnet.
+- API-Key bleibt außerhalb von Addon und ZIP.
+
 ## [0.8.0] – 2026-10-30
 
 ### Quest- und Routenlogik
