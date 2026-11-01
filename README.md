@@ -6,6 +6,14 @@ ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, be
 
 Die aktuelle Version enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reisehinweise, Minimap- und Weltkarten-Navigation, einen **Gear & Rewards**-Tab, XP/h-Lernwerte, Trainer-/Berufsstopps, Gruppenlogik, Questketten-/Zonenfortschritt und Streamer-Layouts.
 
+## UI-Skizzen
+
+Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Navigation-HUD, Minimap-Linie sowie Routen-Score mit Einstellungen und Datenstatus.
+
+<p align="center">
+  <img src="./assets/foreverpath-sketches.jpg" alt="ForeverPath UI-Skizzen" width="100%">
+</p>
+
 ## Installation
 
 1. Öffne auf GitHub die Repository-Seite und klicke auf **Code → Download ZIP**. Dadurch wird `LvL-Guide-main.zip` heruntergeladen.
