@@ -14,20 +14,20 @@ Die aktuelle Version enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuell
 4. Kopiere den kompletten Ordner `ForeverPath` nach:
 
    ```text
-   <WoW-Forever-Ordner>/_forever_/Interface/AddOns/
+   <WoW-Forever-Installationsordner>/Interface/AddOns/
    ```
 
    Danach muss die Datei `ForeverPath.toc` direkt hier liegen:
 
    ```text
-   .../_forever_/Interface/AddOns/ForeverPath/ForeverPath.toc
+   .../Interface/AddOns/ForeverPath/ForeverPath.toc
    ```
 
 5. Starte WoW Forever und öffne die Addon-Auswahl am Charakterbildschirm.
 6. Aktiviere **ForeverPath**. Falls der Client es anbietet, kannst du „Veraltete Addons laden“ aktivieren.
 7. Im Spiel findest du das verschiebbare ForeverPath-Symbol an der Minimap. Linksklick öffnet das Menü, Ziehen verschiebt das Symbol.
 
-**Wichtig:** Am Ende darf der Pfad nicht doppelt verschachtelt sein. Falsch wäre zum Beispiel `AddOns/ForeverPath.zip/ForeverPath` oder `AddOns/ForeverPath/ForeverPath/ForeverPath.toc`.
+**Wichtig:** Verwende den Installationsordner des Forever-Clients, nicht den Retail- oder Classic-Ordner. Der konkrete Ordnername kann je nach Battle.net-Version abweichen; entscheidend ist, dass darin der Forever-Client und anschließend `Interface\AddOns` liegen. Am Ende darf der Pfad nicht doppelt verschachtelt sein. Falsch wäre zum Beispiel `AddOns/ForeverPath.zip/ForeverPath` oder `AddOns/ForeverPath/ForeverPath/ForeverPath.toc`.
 
 ## Bedienung im Spiel
 
@@ -65,7 +65,7 @@ XP/h, Sessionzeit und Todesfälle werden lokal aus deiner tatsächlichen Spielsi
 
 ## Kompatibilität
 
-Der aktuelle Build ist für `Interface: 16001` und den dokumentierten WoW-Forever-Beta-Stand gepackt. Wenn der Client später eine andere Interface-Version verlangt, muss die Interface-Zeile in `ForeverPath.toc` angepasst und im Spiel getestet werden.
+Der aktuelle Build nutzt `Interface: 16001`, die derzeit dokumentierte Forever-Schnittstelle. Die Interface-Zeile und das Addon müssen nach jedem Client-Update im echten Spiel geprüft werden.
 
 Ein echter Client-Test ist immer wichtiger als die Versionsnummer: Wenn das Addon nicht erscheint, zuerst den Installationspfad und die Ordnerstruktur prüfen.
 
@@ -75,7 +75,7 @@ Das Addon enthält einen statischen, dokumentierten Datenstand. Es fragt Forever
 
 Enthaltene öffentliche Quellen:
 
-- [ForeverDB API](https://foreverdb.net/developers) für Quest-, Dungeon-, Klassen-, Berufs- und Zonendaten
+- [ForeverDB API](https://foreverdb.net/developers) für Quest-, Dungeon-, Klassen-, Berufs-, Zonen- und bestätigte Änderungsdaten
 - [QuestieDB-Forever / Forever Quest Pins](https://github.com/TylerAkins/forever-quest-markers)
 - [Evergreen for WoW Forever](https://github.com/Dj2Swagittarius/evergreen-wow-forever)
 

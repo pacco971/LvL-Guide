@@ -14,10 +14,12 @@ OUTPUT = REPO_ROOT / "build" / "ForeverPath" / "ExternalData" / "ForeverDBQuests
 SUPPLEMENTAL_OUTPUT = REPO_ROOT / "build" / "ForeverPath" / "ExternalData" / "ForeverDBSupplemental.lua"
 PAGE_SIZE = 100
 SUPPLEMENTAL_ENDPOINTS = {
-    "dungeons": "dungeons",
-    "classes": "classes",
-    "professions": "professions",
-    "zones": "zones",
+    "dungeons": {"path": "dungeons"},
+    "classes": {"path": "classes"},
+    "professions": {"path": "professions"},
+    "zones": {"path": "zones"},
+    # Verified observations include quest XP/rewards and item/NPC changes.
+    "changesSeen": {"path": "changes-seen", "params": {"verified": "1"}},
 }
 
 
@@ -42,10 +44,13 @@ def request_page(api_key, offset):
             time.sleep(max(1, retry_after))
 
 
-def request_collection(api_key, endpoint):
+def request_collection(api_key, endpoint, extra_params=None):
     records, offset, total, last_meta = [], 0, None, {}
     while total is None or offset < total:
-        query = urllib.parse.urlencode({"limit": PAGE_SIZE, "offset": offset})
+        params = {"limit": PAGE_SIZE, "offset": offset}
+        if extra_params:
+            params.update(extra_params)
+        query = urllib.parse.urlencode(params)
         request = urllib.request.Request(
             f"https://foreverdb.net/api/v1/{endpoint}?{query}",
             headers={"X-API-Key": api_key, "Accept": "application/json", "User-Agent": "ForeverPathDataImporter/0.7 (+https://foreverdb.net)"},
@@ -158,11 +163,16 @@ def main():
     records = {}
     offset = 0
     total = None
+    build = None
+    client = None
     attribution = "Data from ForeverDB.net (https://foreverdb.net)"
     while total is None or offset < total:
         page = request_page(api_key, offset)
-        total = int(page.get("meta", {}).get("total", 0))
-        attribution = page.get("meta", {}).get("attribution") or attribution
+        page_meta = page.get("meta", {})
+        total = int(page_meta.get("total", 0))
+        build = page_meta.get("build") or build
+        client = page_meta.get("client") or client
+        attribution = page_meta.get("attribution") or attribution
         for item in page.get("data", []):
             normalized = normalize(item)
             if normalized.get("id"):
@@ -171,7 +181,7 @@ def main():
         print(f"geladen: {min(offset, total)}/{total}")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    metadata = {"total": total, "attribution": attribution, "endpoint": API_ROOT, "imported": len(records)}
+    metadata = {"build": build, "client": client, "total": total, "attribution": attribution, "endpoint": API_ROOT, "imported": len(records)}
     with OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("-- GENERATED from the ForeverDB API.\n")
         handle.write("-- Source: https://foreverdb.net/developers\n")
@@ -182,9 +192,9 @@ def main():
     print(f"geschrieben: {OUTPUT} ({len(records)} Quests)")
 
     supplemental = {}
-    for key, endpoint in SUPPLEMENTAL_ENDPOINTS.items():
-        print(f"lade: {endpoint}")
-        supplemental[key] = request_collection(api_key, endpoint)
+    for key, spec in SUPPLEMENTAL_ENDPOINTS.items():
+        print(f"lade: {spec['path']}")
+        supplemental[key] = request_collection(api_key, spec["path"], spec.get("params"))
     with SUPPLEMENTAL_OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("-- GENERATED from the ForeverDB API.\n")
         handle.write("-- Source: https://foreverdb.net/developers\n")

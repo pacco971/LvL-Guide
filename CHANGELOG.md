@@ -2,6 +2,15 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.9.2] – 2026-11-01
+
+- ForeverDB-Daten auf Build `1.60.1.70707` aktualisiert.
+- Questdaten speichern jetzt zusätzlich Quest-Build und Clientkennung.
+- Dungeons, Klassen, Berufe, Zonen sowie bestätigte ForeverDB-Änderungen (`changes-seen`, `verified=1`) importiert.
+- Datenstatus im Addon zeigt Build, Importumfang und bestätigte Änderungen an.
+- README-Installation auf den tatsächlichen Forever-Installationsordner angepasst; kein fest vorausgesetzter Ordnername `_forever_` mehr.
+- Paket- und statische Prüfungen durchgeführt; echter Login-/Ingame-Smoke-Test bleibt bis zum verfügbaren Forever-Client offen.
+
 ## [0.9.1] – 2026-10-31
 
 ### Route 1.0 und Navigation
