@@ -1,0 +1,70 @@
+name: Refresh ForeverPath from ForeverDB
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+# Serialize scheduled and manual checks so the same data build is never
+# processed twice at the same time.
+concurrency:
+  group: foreverdb-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    # A manual re-run must not risk uploading the same CurseForge file twice.
+    # The next scheduled run will retry a failed refresh.
+    if: github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Check required secrets
+        shell: bash
+        env:
+          FOREVERDB_API_KEY: ${{ secrets.FOREVERDB_API_KEY }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          test -n "$FOREVERDB_API_KEY" || {
+            echo "::error::Missing repository secret FOREVERDB_API_KEY"
+            exit 1
+          }
+          test -n "$CF_API_TOKEN" || {
+            echo "::error::Missing repository secret CF_API_TOKEN"
+            exit 1
+          }
+
+      - name: Refresh the local ForeverDB snapshot
+        id: refresh
+        shell: bash
+        env:
+          FOREVERDB_API_KEY: ${{ secrets.FOREVERDB_API_KEY }}
+        run: python tools/refresh_foreverdb.py
+
+      - name: Upload the changed archive to CurseForge
+        if: steps.refresh.outputs.data_changed == 'true'
+        uses: itsmeow/curseforge-upload@1493c4408b462f2ad8beb600f09c505e0c158397 # v3.1.2
+        with:
+          token: ${{ secrets.CF_API_TOKEN }}
+          project_id: '1778870'
+          game_endpoint: wow
+          file_path: ${{ steps.refresh.outputs.archive_name }}
+          display_name: ForeverPath ForeverDB ${{ steps.refresh.outputs.data_build }}
+          release_type: release
+          changelog: Automated data refresh for ForeverDB build ${{ steps.refresh.outputs.data_build }}. See CHANGELOG.md for code changes.
+          changelog_type: markdown
+
+      - name: Commit the refreshed archive
+        if: steps.refresh.outputs.data_changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ForeverPath.zip
+          git commit -m "Refresh ForeverPath data for ForeverDB ${{ steps.refresh.outputs.data_build }}"
+          git push origin HEAD:main
