@@ -48,16 +48,21 @@ jobs:
 
       - name: Upload the changed archive to CurseForge
         if: steps.refresh.outputs.data_changed == 'true'
-        uses: itsmeow/curseforge-upload@1493c4408b462f2ad8beb600f09c505e0c158397 # v3.1.2
-        with:
-          token: ${{ secrets.CF_API_TOKEN }}
-          project_id: '1778870'
-          game_endpoint: wow
-          file_path: ${{ steps.refresh.outputs.archive_name }}
-          display_name: ForeverPath ForeverDB ${{ steps.refresh.outputs.data_build }}
-          release_type: release
-          changelog: Automated data refresh for ForeverDB build ${{ steps.refresh.outputs.data_build }}. See CHANGELOG.md for code changes.
-          changelog_type: markdown
+        shell: bash
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          ARCHIVE_NAME: ${{ steps.refresh.outputs.archive_name }}
+          DATA_BUILD: ${{ steps.refresh.outputs.data_build }}
+        run: |
+          metadata="$(jq -n \
+            --arg displayName "ForeverPath ForeverDB $DATA_BUILD" \
+            --arg changelog "Automated data refresh for ForeverDB build $DATA_BUILD. See CHANGELOG.md for code changes." \
+            '{changelog: $changelog, changelogType: "markdown", displayName: $displayName, releaseType: "release"}')"
+          curl --fail-with-body --retry 3 --retry-delay 5 --retry-all-errors \
+            -H "X-Api-Token: $CF_API_TOKEN" \
+            -F "metadata=$metadata" \
+            -F "file=@$ARCHIVE_NAME;type=application/zip" \
+            "https://wow.curseforge.com/api/projects/1778870/upload-file"
 
       - name: Commit the refreshed archive
         if: steps.refresh.outputs.data_changed == 'true'
