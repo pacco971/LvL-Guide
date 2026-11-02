@@ -28,13 +28,17 @@ jobs:
         run: test -s ForeverPath.zip
 
       - name: Upload to CurseForge
-        uses: itsmeow/curseforge-upload@1493c4408b462f2ad8beb600f09c505e0c158397 # v3.1.2
-        with:
-          token: ${{ secrets.CF_API_TOKEN }}
-          project_id: '1778870'
-          game_endpoint: wow
-          file_path: ForeverPath.zip
-          display_name: ForeverPath ${{ github.ref_name }}
-          release_type: release
-          changelog: Release ${{ github.ref_name }}. See CHANGELOG.md in the repository for details.
-          changelog_type: markdown
+        shell: bash
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          metadata="$(jq -n \
+            --arg displayName "ForeverPath $RELEASE_TAG" \
+            --arg changelog "Release $RELEASE_TAG. See CHANGELOG.md in the repository for details." \
+            '{changelog: $changelog, changelogType: "markdown", displayName: $displayName, releaseType: "release"}')"
+          curl --fail-with-body --retry 3 --retry-delay 5 --retry-all-errors \
+            -H "X-Api-Token: $CF_API_TOKEN" \
+            -F "metadata=$metadata" \
+            -F "file=@ForeverPath.zip;type=application/zip" \
+            "https://wow.curseforge.com/api/projects/1778870/upload-file"
