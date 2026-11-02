@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.9.3] – 2026-11-02
+
+- Addon-Paket auf ForeverPath `0.9.3` angehoben.
+- Release-Paket für den automatischen CurseForge-Upload vorbereitet.
+
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
 ## [0.9.2] – 2026-11-01
