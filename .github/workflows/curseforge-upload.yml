@@ -1,0 +1,40 @@
+name: Upload ForeverPath to CurseForge
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+# A tag represents one CurseForge file. Do not upload the same tag concurrently.
+concurrency:
+  group: curseforge-upload-${{ github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  upload:
+    # A manual re-run of a completed/partially completed upload must not create
+    # a second CurseForge file for the same tag.
+    if: github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out the tagged commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Verify the release archive
+        shell: bash
+        run: test -s ForeverPath.zip
+
+      - name: Upload to CurseForge
+        uses: itsmeow/curseforge-upload@1493c4408b462f2ad8beb600f09c505e0c158397 # v3.1.2
+        with:
+          token: ${{ secrets.CF_API_TOKEN }}
+          project_id: '1778870'
+          game_endpoint: wow
+          file_path: ForeverPath.zip
+          display_name: ForeverPath ${{ github.ref_name }}
+          release_type: release
+          changelog: Release ${{ github.ref_name }}. See CHANGELOG.md in the repository for details.
+          changelog_type: markdown
