@@ -33,10 +33,16 @@ jobs:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
+          release_type="release"
+          case "$RELEASE_TAG" in
+            *-alpha*) release_type="alpha" ;;
+            *-beta*) release_type="beta" ;;
+          esac
           metadata="$(jq -n \
             --arg displayName "ForeverPath $RELEASE_TAG" \
             --arg changelog "Release $RELEASE_TAG. See CHANGELOG.md in the repository for details." \
-            '{changelog: $changelog, changelogType: "markdown", displayName: $displayName, releaseType: "release", gameVersionNames: ["1.60.1"]}')"
+            --arg releaseType "$release_type" \
+            '{changelog: $changelog, changelogType: "markdown", displayName: $displayName, releaseType: $releaseType, gameVersionNames: ["1.60.1"]}')"
           curl --fail-with-body --retry 3 --retry-delay 5 --retry-all-errors \
             -H "X-Api-Token: $CF_API_TOKEN" \
             -F "metadata=$metadata" \
