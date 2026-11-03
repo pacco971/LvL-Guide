@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import time
+import argparse
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -20,6 +21,15 @@ SUPPLEMENTAL_ENDPOINTS = {
     "zones": {"path": "zones"},
     # Verified observations include quest XP/rewards and item/NPC changes.
     "changesSeen": {"path": "changes-seen", "params": {"verified": "1"}},
+}
+EXTENDED_ENDPOINTS = {
+    # These endpoints are intentionally opt-in: they can be larger than the
+    # core import and should not consume the daily quota on every routine run.
+    "itemsets": {"path": "itemsets"},
+    "vendors": {"path": "vendors", "params": {"seen": "true"}},
+    "poisons": {"path": "poisons"},
+    "disenchant": {"path": "disenchant"},
+    "battlegrounds": {"path": "battlegrounds"},
 }
 
 
@@ -71,6 +81,25 @@ def request_collection(api_key, endpoint, extra_params=None):
         if total == 0 or not page.get("data"):
             break
     return {"meta": last_meta, "data": records}
+
+
+def request_detail(api_key, endpoint, resource_id):
+    request = urllib.request.Request(
+        f"https://foreverdb.net/api/v1/{endpoint}/{urllib.parse.quote(str(resource_id))}",
+        headers={
+            "X-API-Key": api_key,
+            "Accept": "application/json",
+            "User-Agent": "ForeverPathDataImporter/0.9 (+https://foreverdb.net)",
+        },
+    )
+    while True:
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            if error.code != 429:
+                raise
+            time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
 
 
 def endpoint(value):
@@ -156,6 +185,13 @@ def lua(value):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Importiert öffentliche ForeverDB-Daten ohne den API-Key zu speichern.")
+    parser.add_argument(
+        "--extended",
+        action="store_true",
+        help="importiert zusätzlich Itemsets, Händler, Gifte, Disenchant, Battlegrounds und Dungeon-Details",
+    )
+    args = parser.parse_args()
     api_key = os.environ.get("FOREVERDB_API_KEY")
     if not api_key:
         raise SystemExit("FOREVERDB_API_KEY fehlt. Der Schlüssel wird nicht in eine Datei geschrieben.")
@@ -191,10 +227,28 @@ def main():
         handle.write("ns.ForeverDBQuests = " + lua(records) + "\n")
     print(f"geschrieben: {OUTPUT} ({len(records)} Quests)")
 
-    supplemental = {}
-    for key, spec in SUPPLEMENTAL_ENDPOINTS.items():
+    endpoint_specs = dict(SUPPLEMENTAL_ENDPOINTS)
+    if args.extended:
+        endpoint_specs.update(EXTENDED_ENDPOINTS)
+
+    supplemental = {"meta": {"profile": "extended" if args.extended else "core"}}
+    for key, spec in endpoint_specs.items():
         print(f"lade: {spec['path']}")
         supplemental[key] = request_collection(api_key, spec["path"], spec.get("params"))
+
+    if args.extended:
+        dungeon_rows = supplemental.get("dungeons", {}).get("data", [])
+        details = {}
+        for dungeon in dungeon_rows:
+            dungeon_id = dungeon.get("id") if isinstance(dungeon, dict) else None
+            is_forever_dungeon = isinstance(dungeon, dict) and (
+                dungeon.get("status") == "forever" or dungeon.get("newInForever") is True
+            )
+            if not dungeon_id or not is_forever_dungeon:
+                continue
+            print(f"lade: dungeons/{dungeon_id}")
+            details[str(dungeon_id)] = request_detail(api_key, "dungeons", dungeon_id)
+        supplemental["dungeonDetails"] = details
     with SUPPLEMENTAL_OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("-- GENERATED from the ForeverDB API.\n")
         handle.write("-- Source: https://foreverdb.net/developers\n")

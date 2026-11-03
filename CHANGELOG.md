@@ -7,6 +7,16 @@
 
 Alle wichtigen Änderungen an ForeverPath werden hier dokumentiert.
 
+## [0.9.3-beta] – 2026-11-03
+
+- Navigation, Minimap-Linie und Weltkarten-Overlay gegen geschützte/ungültige Positionswerte abgesichert; nicht lesbare Werte werden als „nicht verfügbar“ behandelt.
+- User-Waypoints werden vor dem Setzen geprüft und in geschützten Kartenbereichen sicher ignoriert, statt das Addon zu stoppen.
+- SavedVariables-Profil verwendet Charaktername/Realm statt einer möglichen GUID als Tabellenschlüssel und exportiert den Ladezustand im Fehlerbericht.
+- Rewardvergleich meldet den tatsächlich verfügbaren Forever-Client-API-Status, statt fehlende Item-Belohnungsfunktionen stillschweigend vorauszusetzen.
+- ForeverDB-Importer um optionalen `--extended`-Lauf für Itemsets, Händler, Gifte, Disenchant, Battlegrounds und Dungeon-Details erweitert; der Schlüssel bleibt ausschließlich lokal.
+- QuestPilot-Icon ergänzt und als Addon-Icon in der TOC hinterlegt.
+- Neue Beta-ZIP enthält weiterhin den statischen ForeverDB-Stand `1.60.1.70707`; ein echter Login-/Ingame-Test bleibt vor Veröffentlichung als Release offen.
+
 ## [0.9.2] – 2026-11-01
 
 - ForeverDB-Daten auf Build `1.60.1.70707` aktualisiert.
