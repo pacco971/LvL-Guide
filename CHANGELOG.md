@@ -11,6 +11,7 @@
 - Layer-Routing ergänzt: lokale Überfarm-Indikatoren, ForeverGuild-Adapter, sichtbarer Wechselvorschlag; kein automatisches Layer-Hopping ohne öffentliche API.
 - ForeverDB-Importer speichert API-Metadaten und kann im erweiterten Lauf Items und Spells kompakt importieren; der GitHub-Refresh nutzt den erweiterten Lauf.
 - API-Key bleibt außerhalb von Repository, Addon und ZIP.
+- Extended-Refresh fängt vorübergehende ForeverDB-5xx-Fehler bei optionalen Item-/Spell-Endpunkten mit Retries ab; der Questimport kann dadurch trotzdem sauber abgeschlossen werden.
 
 ## [0.9.3] – 2026-11-02
 

@@ -81,7 +81,7 @@ def request_page(api_key, offset):
             time.sleep(max(1, retry_after))
 
 
-def request_collection(api_key, endpoint, extra_params=None):
+def request_collection(api_key, endpoint, extra_params=None, allow_transient_failure=False):
     records, offset, total, last_meta = [], 0, None, {}
     while total is None or offset < total:
         params = {"limit": PAGE_SIZE, "offset": offset}
@@ -92,15 +92,26 @@ def request_collection(api_key, endpoint, extra_params=None):
             f"https://foreverdb.net/api/v1/{endpoint}?{query}",
             headers={"X-API-Key": api_key, "Accept": "application/json", "User-Agent": "ForeverPathDataImporter/0.7 (+https://foreverdb.net)"},
         )
+        attempts = 0
         while True:
             try:
                 with urllib.request.urlopen(request, timeout=30) as response:
                     page = json.load(response)
                 break
             except urllib.error.HTTPError as error:
-                if error.code != 429:
-                    raise
-                time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
+                if error.code == 429:
+                    attempts += 1
+                    time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
+                    continue
+                if 500 <= error.code < 600:
+                    attempts += 1
+                    if attempts >= 5 and allow_transient_failure:
+                        print(f"warnung: {endpoint} antwortet weiter mit HTTP {error.code}; Endpoint wird für diesen Lauf übersprungen")
+                        return {"meta": {"endpoint": endpoint, "warning": f"HTTP {error.code}"}, "data": []}
+                    if attempts < 5:
+                        time.sleep(min(60, 5 * (2 ** (attempts - 1))))
+                        continue
+                raise
         last_meta = page.get("meta", {})
         total = int(last_meta.get("total", 0))
         records.extend(page.get("data", []))
@@ -281,7 +292,15 @@ def main():
     supplemental = {"meta": {"profile": "extended" if args.extended else "core"}}
     for key, spec in endpoint_specs.items():
         print(f"lade: {spec['path']}")
-        supplemental[key] = compact_collection(key, request_collection(api_key, spec["path"], spec.get("params")))
+        supplemental[key] = compact_collection(
+            key,
+            request_collection(
+                api_key,
+                spec["path"],
+                spec.get("params"),
+                allow_transient_failure=key in {"items", "spells"},
+            ),
+        )
 
     if args.extended:
         dungeon_rows = supplemental.get("dungeons", {}).get("data", [])
