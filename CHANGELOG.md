@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.10-beta] – 2026-11-05
+
+- Navigationspfeil erkennt jetzt Zonenkarten auch dann, wenn der Forever-Client für den Spieler nur die Kontinentkarte meldet.
+- Fertige Quests erhalten ohne separaten Marker den bekannten QuestieDB-NPC-Punkt als Abgabe-Wegpunkt.
+- Evergreen-Questgeber werden bei fehlendem Abgabe-Punkt als sicherer Fallback verwendet.
+- Release auf `0.9.10-beta` angehoben.
+
 ## [0.9.9-beta] – 2026-11-05
 
 - Quest-XP-Projektion wählt den Questlog-Eintrag vor der XP-Abfrage aus und unterstützt dadurch Forever-API-Varianten zuverlässiger.
