@@ -30,7 +30,34 @@ EXTENDED_ENDPOINTS = {
     "poisons": {"path": "poisons"},
     "disenchant": {"path": "disenchant"},
     "battlegrounds": {"path": "battlegrounds"},
+    "items": {"path": "items"},
+    "spells": {"path": "spells"},
 }
+
+
+def request_json(api_key, path, params=None):
+    query = urllib.parse.urlencode(params or {})
+    url = f"https://foreverdb.net/api/v1/{path}"
+    if query:
+        url += "?" + query
+    request = urllib.request.Request(
+        url,
+        headers={
+            "X-API-Key": api_key,
+            "Accept": "application/json",
+            "User-Agent": "ForeverPathDataImporter/0.10 (+https://foreverdb.net)",
+        },
+    )
+    while True:
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            if error.code == 404:
+                return {}
+            if error.code != 429:
+                raise
+            time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
 
 
 def request_page(api_key, offset):
@@ -162,6 +189,25 @@ def normalize(item):
     }
 
 
+def compact_collection(name, collection):
+    """Keep the client-relevant fields while avoiding a second raw API dump."""
+    if not isinstance(collection, dict) or not isinstance(collection.get("data"), list):
+        return collection
+    fields = {
+        "items": ("id", "name", "quality", "itemLevel", "requiredLevel", "class", "subclass", "slot", "stats", "damage", "speed", "source", "liveClient", "dataFromBuild", "url"),
+        "spells": ("id", "name", "rank", "description", "icon", "requiredLevel", "cooldown", "costs", "school", "source", "liveClient", "dataFromBuild", "url"),
+    }.get(name)
+    if not fields:
+        return collection
+    rows = []
+    for item in collection["data"]:
+        if isinstance(item, dict):
+            rows.append({key: item.get(key) for key in fields if item.get(key) is not None})
+    result = dict(collection)
+    result["data"] = rows
+    return result
+
+
 def lua(value):
     if value is None:
         return "nil"
@@ -217,7 +263,8 @@ def main():
         print(f"geladen: {min(offset, total)}/{total}")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    metadata = {"build": build, "client": client, "total": total, "attribution": attribution, "endpoint": API_ROOT, "imported": len(records)}
+    api_meta = request_json(api_key, "meta")
+    metadata = {"build": build, "client": client, "total": total, "attribution": attribution, "endpoint": API_ROOT, "imported": len(records), "apiMeta": api_meta.get("data") or api_meta.get("meta") or api_meta}
     with OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("-- GENERATED from the ForeverDB API.\n")
         handle.write("-- Source: https://foreverdb.net/developers\n")
@@ -234,7 +281,7 @@ def main():
     supplemental = {"meta": {"profile": "extended" if args.extended else "core"}}
     for key, spec in endpoint_specs.items():
         print(f"lade: {spec['path']}")
-        supplemental[key] = request_collection(api_key, spec["path"], spec.get("params"))
+        supplemental[key] = compact_collection(key, request_collection(api_key, spec["path"], spec.get("params")))
 
     if args.extended:
         dungeon_rows = supplemental.get("dungeons", {}).get("data", [])

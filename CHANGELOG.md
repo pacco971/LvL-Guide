@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.4-beta] – 2026-11-04
+
+- Quest-XP-Projektion über der Blizzard-XP-Leiste ergänzt: fertige Quest-XP, Vorschauwert und „LEVEL UP READY!“.
+- Questbelohnungs-XP nutzt sichere Client-APIs und einen versteckten Tooltip-Fallback; unbekannte Werte bleiben sichtbar als geschätzt markiert.
+- XP-Session in Kill-, Quest-, sonstige XP sowie Reise-/Kampfzeit aufgeteilt; TTG nutzt einen gewichteten gleitenden Mittelwert über bis zu zehn Minuten.
+- Navigations-HUD um einen mehrschichtigen 3D-Style-Pfeil und einen optionalen effizienten EP-Mob-Wegpunkt erweitert.
+- Pfeilgröße, Pfeilfarbe, Pfeilstil, EP-Mob-Priorität und Layer-Hinweise sind über das Ingame-Menü einstellbar; der HUD bleibt verschiebbar.
+- Mouseover-/Target-Tooltips zeigen geschätzte Mob-XP, Level-Prozent und Kills bis zum Level-Up; beobachtete XP-Gewinne verbessern die Schätzung lokal.
+- Layer-Routing ergänzt: lokale Überfarm-Indikatoren, ForeverGuild-Adapter, sichtbarer Wechselvorschlag; kein automatisches Layer-Hopping ohne öffentliche API.
+- ForeverDB-Importer speichert API-Metadaten und kann im erweiterten Lauf Items und Spells kompakt importieren; der GitHub-Refresh nutzt den erweiterten Lauf.
+- API-Key bleibt außerhalb von Repository, Addon und ZIP.
+
 ## [0.9.3] – 2026-11-02
 
 - Addon-Paket auf ForeverPath `0.9.3` angehoben.

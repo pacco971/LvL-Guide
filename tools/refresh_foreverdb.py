@@ -120,7 +120,7 @@ def main() -> int:
         )
 
     subprocess.run(
-        [sys.executable, str(REPO_ROOT / "tools" / "import_foreverdb.py")],
+        [sys.executable, str(REPO_ROOT / "tools" / "import_foreverdb.py"), "--extended"],
         cwd=REPO_ROOT,
         env=env,
         check=True,

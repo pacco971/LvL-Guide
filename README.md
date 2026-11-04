@@ -4,7 +4,7 @@ Eigenständiges Leveling- und Routen-Addon für **World of Warcraft: Forever**.
 
 ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, bewertet Alternativen und verfolgt deinen Fortschritt. Das Design und die Routenlogik sind eigenständig und enthalten keine RestedXP-Quelltexte, Grafiken, Texte oder geschützten Guide-Inhalte.
 
-Die aktuelle Beta-Version `0.9.3-beta` enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reisehinweise, Minimap- und Weltkarten-Navigation, einen **Gear & Rewards**-Tab, XP/h-Lernwerte, Trainer-/Berufsstopps, Gruppenlogik, Questketten-/Zonenfortschritt und Streamer-Layouts.
+Die aktuelle Beta-Version `0.9.4-beta` enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reisehinweise, Minimap- und Weltkarten-Navigation, einen **Gear & Rewards**-Tab, XP/h-Lernwerte, Trainer-/Berufsstopps, Gruppenlogik, Questketten-/Zonenfortschritt und Streamer-Layouts.
 
 ## UI-Skizzen
 
@@ -42,7 +42,12 @@ Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Nav
 - **Minimap-Symbol:** Menü öffnen, verschieben oder per Rechtsklick Route analysieren
 - **Tracker:** zeigt aktuellen Schritt, Questziel, Fortschritt, Score, XP/h und Tode
 - **Navigations-HUD:** Richtung, Zielart, Entfernung und geschätzte Reisezeit
+- **EP-Navigationsmodus:** passende Mob-Zielpunkte werden als Quest-/EP-Ziel priorisiert; die Schätzung wird aus beobachteten XP-Gewinnen verbessert
 - **Weltkarte:** Linie zum aktuellen Ziel und kommende Routenpunkte
+- **Quest-XP-Projektion:** fertige Questbelohnungen werden als Vorschau über der Blizzard-XP-Leiste angezeigt; „LEVEL UP READY!“ wird nur bei ausreichender Summe eingeblendet
+- **Dynamische TTG:** XP/h wird als gewichteter gleitender Wert über bis zu zehn Minuten berechnet und getrennt nach Kills, Quests und Reisezeit ausgewiesen
+- **Tooltip-Mobwert:** Mouseover-/Target-Tooltips zeigen geschätzte Mob-XP, Level-Prozent und Kills bis zum Level-Up
+- **Layer-Hinweis:** lokale Überfarm-Indikatoren und optionale ForeverGuild-Layerdaten führen zu einem Wechselvorschlag; das Addon wechselt Layer niemals selbstständig
 - **Route sync:** findet nach einem übersprungenen Schritt automatisch einen passenden Schritt in der aktuellen Zone
 - **Jetzt analysieren:** startet den Quest- und Routen-Scan sofort
 - Automatischer Scan beim Login und anschließend alle fünf Minuten
@@ -53,6 +58,7 @@ Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Nav
 - Gear-Profile für Auto, DPS, Tank und Heiler sowie Questbelohnungs-Vergleich
 - gespeicherte Fensterpositionen, UI-Sperre, Transparenz, Schriftgröße und Minimalmodus
 - Fehlerbericht-Export für Discord und Datenstatus mit ForeverDB-Build
+- Quest-XP-API mit verstecktem Tooltip-Fallback, falls der Client keinen Rewardwert liefert
 
 Die Bedienung läuft vollständig über das verschiebbare Minimap-Symbol, den Tracker und die sichtbaren Buttons im Menü. Chatbefehle sind nicht erforderlich.
 
@@ -69,11 +75,11 @@ Die Empfehlung berücksichtigt unter anderem:
 - Dungeon-Level, Gruppengröße, ForeverDB-Status und heuristischen Gear-/Loot-Bedarf
 - aktuelle Zone und bereits erledigte Schritte
 
-XP/h, Sessionzeit und Todesfälle werden lokal aus deiner tatsächlichen Spielsitzung erfasst. Fehlende Laufzeit- oder Lootwerte werden im Addon als Schätzung behandelt.
+XP/h, Sessionzeit, Quest-/Kill-XP, Reisezeit und Todesfälle werden lokal aus deiner tatsächlichen Spielsitzung erfasst. Mob-XP und Layer-Druck bleiben ausdrücklich Schätzungen, bis der Client oder eine optionale ForeverGuild-Schnittstelle bestätigte Daten liefert.
 
 ## Kompatibilität
 
-Der aktuelle Build nutzt `Interface: 16001`, die derzeit dokumentierte Forever-Schnittstelle. Die Interface-Zeile und das Addon müssen nach jedem Client-Update im echten Spiel geprüft werden.
+Der aktuelle Build nutzt `Interface: 16001`, die derzeit dokumentierte Forever-Schnittstelle. Die Interface-Zeile und das Addon müssen nach jedem Client-Update im echten Spiel geprüft werden. XP- und Layer-Funktionen sind defensiv implementiert und fallen bei fehlenden APIs auf sichtbare Schätzungen zurück.
 
 Ein echter Client-Test ist immer wichtiger als die Versionsnummer: Wenn das Addon nicht erscheint, zuerst den Installationspfad und die Ordnerstruktur prüfen.
 
@@ -91,7 +97,7 @@ Die vollständigen Attributionen, Lizenztexte und Import-Hinweise liegen im Addo
 
 ## Daten aktualisieren
 
-Für Entwickler liegt unter [`DATA-UPDATE.md`](./DATA-UPDATE.md) die Anleitung für neue lokale ForeverDB-Daten. Der Importer [`tools/import_foreverdb.py`](./tools/import_foreverdb.py) liest den persönlichen Schlüssel ausschließlich aus `FOREVERDB_API_KEY` und schreibt ihn nicht in Dateien. Der optionale Aufruf `python tools/import_foreverdb.py --extended` ergänzt weitere öffentliche Endpoint-Daten und Dungeon-Details.
+Für Entwickler liegt unter [`DATA-UPDATE.md`](./DATA-UPDATE.md) die Anleitung für neue lokale ForeverDB-Daten. Der Importer [`tools/import_foreverdb.py`](./tools/import_foreverdb.py) liest den persönlichen Schlüssel ausschließlich aus `FOREVERDB_API_KEY` und schreibt ihn nicht in Dateien. Der optionale Aufruf `python tools/import_foreverdb.py --extended` ergänzt weitere öffentliche Endpoint-Daten, Dungeon-Details sowie kompakte Item- und Spell-Daten.
 
 Bitte niemals einen API-Key committen oder in die Addon-ZIP packen. Bei versehentlicher Offenlegung den Schlüssel auf der ForeverDB-Developer-Seite widerrufen und einen neuen erstellen.
 
