@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.9-beta] – 2026-11-05
+
+- Quest-XP-Projektion wählt den Questlog-Eintrag vor der XP-Abfrage aus und unterstützt dadurch Forever-API-Varianten zuverlässiger.
+- Fertige Quest-XP zeigt jetzt Anzahl der Quests, Gesamt-XP und Vorschau-Prozent an.
+- Die Anzeige ergänzt „Level-Up in …“ auf Basis der gemessenen XP/h; ohne Messwerte steht sichtbar „wird gemessen“.
+- XP-Projektionsbalken liegt sichtbar über der Blizzard-XP-Leiste.
+- Release auf `0.9.9-beta` angehoben.
+
 ## [0.9.8-beta] – 2026-11-05
 
 - Offene Questziele im Questlog werden vor fertigen, noch nicht abgegebenen Quests priorisiert.
