@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.6-beta] – 2026-11-05
+
+- Aktive Questtitel werden im Tracker aus dem echten Questlog übernommen; lokalisierte Titel wie „Die Verdammten“ bleiben sichtbar.
+- Evergreen-Zielpunkte werden bei bekannten Questtiteln auch ohne Quest-ID-Verknüpfung als Wegpunkt-Fallback verwendet.
+- UI-Fehler beim Einfärben der Routenbuttons behoben (`FontString:SetTextColor` statt Button-Methode).
+- ForeverPath ruft keine ForeverGuild-Funktionen mehr aus dem Layer-Refresh auf, damit geschützte/Secret-Werte nicht zwischen den Addons getaintet werden.
+- XP-, Session- und Aura-Auswertung defensiver gegen geschützte Clientwerte gemacht.
+
 ## [0.9.5-beta] – 2026-11-05
 
 - Der aktive Questlog ist jetzt die primäre Quelle für die Route: laufende Quests werden vor allgemeinen Datenbank-Angeboten eingeplant.
