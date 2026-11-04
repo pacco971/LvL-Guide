@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.8-beta] – 2026-11-05
+
+- Offene Questziele im Questlog werden vor fertigen, noch nicht abgegebenen Quests priorisiert.
+- Der Navigationspfeil führt nach dem Erledigen direkt zur nächsten offenen Quest; die fertige Quest bleibt anschließend als Abgabe-Schritt verfügbar.
+- Release auf `0.9.8-beta` angehoben.
+
 ## [0.9.7-beta] – 2026-11-05
 
 - Navigations-HUD liegt jetzt über dem Hauptfenster und startet sichtbar am oberen Bildschirmrand; der Pfeil bleibt verschiebbar.
