@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.7-beta] – 2026-11-05
+
+- Navigations-HUD liegt jetzt über dem Hauptfenster und startet sichtbar am oberen Bildschirmrand; der Pfeil bleibt verschiebbar.
+- Tooltip-Scanning gegen Forever-Clientvarianten abgesichert; ein inkompatibler `HookScript` kann den Addon-Start nicht mehr abbrechen.
+- Release auf `0.9.7-beta` angehoben.
+
 ## [0.9.6-beta] – 2026-11-05
 
 - Aktive Questtitel werden im Tracker aus dem echten Questlog übernommen; lokalisierte Titel wie „Die Verdammten“ bleiben sichtbar.
