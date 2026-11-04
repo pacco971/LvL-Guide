@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.5-beta] – 2026-11-05
+
+- Der aktive Questlog ist jetzt die primäre Quelle für die Route: laufende Quests werden vor allgemeinen Datenbank-Angeboten eingeplant.
+- Questphasen werden aus dem echten Clientstatus abgeleitet: Ziele zuerst erledigen, fertige Quests zur Abgabe priorisieren und danach neu planen.
+- Questlog-Einträge werden auch bei älteren Client-APIs sicher erkannt; Titelabgleich und unbekannte Quest-IDs bleiben als Live-Schritt sichtbar.
+- Der Navigationspfeil nutzt den aktuellen Blizzard-Questmarker als Fallback und kennzeichnet Ziel-, Gegner- und Item-Schritte genauer.
+- Nahe Annahmequests und Folgequests werden erst nach den aktiven Questlog-Schritten in die Route aufgenommen.
+- Release auf `0.9.5-beta` angehoben.
+
 ## [0.9.4-beta] – 2026-11-04
 
 - Quest-XP-Projektion über der Blizzard-XP-Leiste ergänzt: fertige Quest-XP, Vorschauwert und „LEVEL UP READY!“.
