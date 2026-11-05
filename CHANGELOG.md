@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.16-beta] – 2026-11-05
+
+- Navigation nutzt jetzt zusätzlich die klassische `GetPlayerMapPosition`-API des Forever-Clients.
+- Dadurch werden Ziele in derselben Zone nicht mehr fälschlich als `Gebietswechsel erforderlich` angezeigt.
+- Der Pfeil erhält wieder eine echte Richtung zu NPCs, Gegnern, Items und Abgaben und folgt der Spielerbewegung.
+- Release auf `0.9.16-beta` angehoben.
+
 ## [0.9.15-beta] – 2026-11-05
 
 - Legacy-Unicode-Pfeil vollständig deaktiviert; das alte lila Kästchen kann nicht mehr im großen HUD erscheinen.
