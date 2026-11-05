@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.11-beta] – 2026-11-05
+
+- Navigations-HUD wird beim ersten Start dieses Builds sichtbar zurückgesetzt, falls eine alte SavedVariables-Position ihn versteckt oder außerhalb des Bildschirms abgelegt hat.
+- HUD liegt auf einer höheren UI-Ebene und der Richtungs-Pfeil wird deutlich größer gerendert.
+- Release auf `0.9.11-beta` angehoben.
+
 ## [0.9.10-beta] – 2026-11-05
 
 - Navigationspfeil erkennt jetzt Zonenkarten auch dann, wenn der Forever-Client für den Spieler nur die Kontinentkarte meldet.
