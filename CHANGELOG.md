@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.17-beta] – 2026-11-05
+
+- Ingame-Dashboard auf sechs Karten ausgebaut: Navigation-HUD, Questtracker, Routen-Score, XP/TTG, Minimap-Route und Datenstatus.
+- Separater, frei verschiebbarer Navigationspfeil mit eigenem Zieltext, Entfernung, ETA und kurzem Status unter dem Pfeil.
+- Pfeil aktualisiert sich weiter dynamisch mit Spielerposition und Blickrichtung; Farbe, Größe, Transparenz und Position bleiben über das Menü einstellbar.
+- Kartenpositionen funktionieren zusätzlich über Forever-/Classic-Map-APIs, damit Ziele in derselben Zone nicht grundlos als Gebietswechsel erscheinen.
+- Pfeil- und Dashboard-Texte werden gekürzt bzw. getrennt dargestellt, damit keine Zeilen und Buttons mehr ineinander laufen.
+- Release auf `0.9.17-beta` angehoben.
+
 ## [0.9.16-beta] – 2026-11-05
 
 - Navigation nutzt jetzt zusätzlich die klassische `GetPlayerMapPosition`-API des Forever-Clients.
