@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.32-beta] – 2026-11-05
+
+- Eigenes Addon-Icon als 64x64-TGA ergänzt und im TOC korrekt verknüpft.
+- Navigationspfeil durch eine eigene, scharf gerenderte Pfeilgrafik ersetzt.
+- Generisches Blizzard-Seitensymbol, Doppel-Glow und dunkler Rahmen aus dem separaten Pfeil-HUD entfernt.
+- Pfeil-HUD bleibt frei verschiebbar und zeigt Schritt, Entfernung/ETA und das gekürzte Ziel kompakt unter dem Pfeil.
+
 ## [0.9.31-beta] – 2026-11-05
 
 - Eigene Guide-Engine für Forever-Routen ergänzt: Questannahme, Ziele, Abgabe und Folgequest werden als getrennte Schritte geplant.
