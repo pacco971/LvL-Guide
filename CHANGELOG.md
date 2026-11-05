@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.14-beta] – 2026-11-05
+
+- Navigationspfeil auf eine echte WoW-Minimap-Texture umgestellt; kein kaputtes Unicode-Kästchen mehr.
+- Pfeil als eigenes, frei verschiebbares HUD mit Questziel, Entfernung und ETA darunter ergänzt.
+- Detail-Navigation und kleiner Pfeil lassen sich unabhängig positionieren; UI-Sperre gilt für beide.
+- Zieltext im großen Navigationsfeld gekürzt und entzerrt, damit Entfernung und Hinweise nicht mehr ineinander rutschen.
+- Questlog-XP zählt bekannte Belohnungs-XP aller geloggten Quests; fertige Quest-XP bleibt separat für die Level-Up-Projektion.
+- Questlog-Scan fällt auch dann auf die ältere WoW-API zurück, wenn die moderne API keine Einträge liefert.
+- Release auf `0.9.14-beta` angehoben.
+
 ## [0.9.13-beta] – 2026-11-05
 
 - Tracker-Feld vergrößert und neu ausgerichtet: Questtext, Zielbalken, Fortschritt und XP/TTG überlappen nicht mehr.
