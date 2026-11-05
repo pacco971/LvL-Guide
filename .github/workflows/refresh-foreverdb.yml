@@ -68,8 +68,26 @@ jobs:
         if: steps.refresh.outputs.data_changed == 'true'
         shell: bash
         run: |
+          # The data request can take several minutes. During that time a
+          # normal code/tag commit may land on main. Preserve the freshly
+          # generated archive, reset to the newest main, then commit only the
+          # archive. This avoids binary-zip rebase conflicts and stale pushes.
+          refreshed_archive="$RUNNER_TEMP/ForeverPath-refreshed.zip"
+          cp ForeverPath.zip "$refreshed_archive"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ForeverPath.zip
-          git commit -m "Refresh ForeverPath data for ForeverDB ${{ steps.refresh.outputs.data_build }}"
-          git push origin HEAD:main
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$refreshed_archive" ForeverPath.zip
+            git add ForeverPath.zip
+            git commit -m "Refresh ForeverPath data for ForeverDB ${{ steps.refresh.outputs.data_build }}" || true
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "main moved during refresh commit; retrying ($attempt/3)"
+            sleep 2
+          done
+          echo "Could not push refreshed ForeverDB archive after three attempts."
+          exit 1

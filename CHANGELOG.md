@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.25-beta] – 2026-11-05
+
+- Navigation optisch bereinigt: dünne blaue Kernlinie mit dezentem Glow, ein goldener Zielring und ein einzelnes Zielnamen-Label; kommende blaue Punkte bleiben aus.
+- Karten- und Minimap-Ziel zeigen jetzt den aktiven Questnamen statt eines anonymen Folgepunkts.
+- Questlog bleibt die autoritative Quelle für aktive Quest, Ziele und Abgabephase; die lokalen Forever-/Questdaten ergänzen NPC-, Ziel- und Folgequest-Informationen ohne externe Questie-Abhängigkeit.
+- Neuer Reiseplan-Tab für Fuß/Reittier, Flugpunkt, Schiff/Zeppelin, Hearthstone, Klassenreise und Zonenwechsel mit klarer Kennzeichnung bestätigter und unbestätigter Optionen.
+- Gear-&-Rewards-Tab erweitert: Auto/DPS/Tank/Heiler/Solo-Profile, Prozentvergleich von Belohnungen und deutlichere Slot-/Itemdaten.
+- Sichere Auto-Quest-Aktion: passende Questannahme und Öffnen der Abgabe können automatisch erfolgen; die Auswahl und Bestätigung der Questbelohnung bleibt manuell.
+- Neue Funktionen und Statusmeldungen sind für Deutsch und English vorbereitet.
+- `GetWorldPosFromMapPos` robuster gegen Forever-Rückgaben mit Statuswert plus Vektor abgesichert.
+
 ## [0.9.24-beta] – 2026-11-05
 
 - Neue Sprachumschaltung im Menü: Deutsch ↔ English, gespeichert pro Charakter.

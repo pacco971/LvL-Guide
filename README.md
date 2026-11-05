@@ -4,7 +4,7 @@ Eigenständiges Leveling- und Routen-Addon für **World of Warcraft: Forever**.
 
 ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, bewertet Alternativen und verfolgt deinen Fortschritt. Das Design und die Routenlogik sind eigenständig und enthalten keine RestedXP-Quelltexte, Grafiken, Texte oder geschützten Guide-Inhalte.
 
-Die aktuelle Beta-Version `0.9.4-beta` enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reisehinweise, Minimap- und Weltkarten-Navigation, einen **Gear & Rewards**-Tab, XP/h-Lernwerte, Trainer-/Berufsstopps, Gruppenlogik, Questketten-/Zonenfortschritt und Streamer-Layouts.
+Die aktuelle Beta-Version `0.9.25-beta` enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, einen Reiseplaner, Minimap- und Weltkarten-Navigation, einen **Gear & Rewards**-Tab, XP/h-Lernwerte, Trainer-/Berufsstopps, Gruppenlogik, Questketten-/Zonenfortschritt und Streamer-Layouts.
 
 ## UI-Skizzen
 
@@ -44,6 +44,7 @@ Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Nav
 - **Navigations-HUD:** Richtung, Zielart, Entfernung und geschätzte Reisezeit
 - **EP-Navigationsmodus:** passende Mob-Zielpunkte werden als Quest-/EP-Ziel priorisiert; die Schätzung wird aus beobachteten XP-Gewinnen verbessert
 - **Weltkarte:** Linie zum aktuellen Ziel und kommende Routenpunkte
+- **Reiseplan:** sortiert Fuß/Reittier, Flugpunkt, Schiff/Zeppelin, Hearthstone, Klassenreise und Zonenwechsel; unbestätigte Transportwege werden klar markiert
 - **Quest-XP-Projektion:** fertige Questbelohnungen werden als Vorschau über der Blizzard-XP-Leiste angezeigt; „LEVEL UP READY!“ wird nur bei ausreichender Summe eingeblendet
 - **Dynamische TTG:** XP/h wird als gewichteter gleitender Wert über bis zu zehn Minuten berechnet und getrennt nach Kills, Quests und Reisezeit ausgewiesen
 - **Tooltip-Mobwert:** Mouseover-/Target-Tooltips zeigen geschätzte Mob-XP, Level-Prozent und Kills bis zum Level-Up
@@ -56,6 +57,8 @@ Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Nav
 - automatische Route-Recovery, erledigte-Schritte-Überspringen und Score-Alternativen
 - Trainer-, Berufs-, Gasthof-, Flugpunkt-, Reparatur- und Hauptstadtstopp-Empfehlungen
 - Gear-Profile für Auto, DPS, Tank und Heiler sowie Questbelohnungs-Vergleich
+- Gear-Profile für Auto, DPS, Tank, Heiler und Solo sowie Prozentvergleich der Questbelohnungen
+- sichere Auto-Questaktion für die passende Annahme und das Öffnen der Abgabe; die Belohnung bleibt immer manuell auswählbar und bestätigbar
 - gespeicherte Fensterpositionen, UI-Sperre, Transparenz, Schriftgröße und Minimalmodus
 - Fehlerbericht-Export für Discord und Datenstatus mit ForeverDB-Build
 - Quest-XP-API mit verstecktem Tooltip-Fallback, falls der Client keinen Rewardwert liefert
