@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.22-beta] – 2026-11-05
+
+- Das redundante obere Navigations-HUD wird nicht mehr angezeigt; sichtbar bleibt der frei verschiebbare Pfeil mit Ziel, Entfernung und ETA.
+- Oversized-Glow hinter dem Pfeil entfernt, der auf Forever doppelt und unscharf gerendert wurde.
+- Den eigentlichen Navigationspfeil kompakter skaliert und die Live-Aktualisierung direkt an das sichtbare Pfeilfenster gebunden.
+
 ## [0.9.21-beta] – 2026-11-05
 
 - Kritischer Navigationsfehler behoben: Forever liefert bei `GetWorldPosFromMapPos` teilweise Status `0` und den Vektor als zweiten Rückgabewert.
