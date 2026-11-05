@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.12-beta] – 2026-11-05
+
+- Alte Navigation-SavedVariables werden beim Update vollständig entfernt; der HUD startet garantiert oben mittig.
+- Legacy-Positionen überschreiben den sichtbaren Standardstart nicht mehr.
+- Das Einstellungsmenü zeigt jetzt klar `Navigation: AN` oder `Navigation: AUS`.
+- Release auf `0.9.12-beta` angehoben.
+
 ## [0.9.11-beta] – 2026-11-05
 
 - Navigations-HUD wird beim ersten Start dieses Builds sichtbar zurückgesetzt, falls eine alte SavedVariables-Position ihn versteckt oder außerhalb des Bildschirms abgelegt hat.
