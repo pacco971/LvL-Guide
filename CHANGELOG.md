@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.23-beta] – 2026-11-05
+
+- Minimap-Button neu gestaltet: kompaktes Karten-Icon mit sauberem ForeverPath-Ring statt übergroßem, unscharfem Rahmen.
+- Minimap-Icon bleibt frei verschiebbar; ein Drag löst nicht mehr versehentlich zusätzlich das Öffnen des Addons aus.
+- Minimap-Größe ist im Menü über `Minimap −` und `Minimap +` von 0,7x bis 1,45x einstellbar und wird gespeichert.
+
 ## [0.9.22-beta] – 2026-11-05
 
 - Das redundante obere Navigations-HUD wird nicht mehr angezeigt; sichtbar bleibt der frei verschiebbare Pfeil mit Ziel, Entfernung und ETA.
