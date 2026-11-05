@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.29-beta] – 2026-11-05
+
+- Ingame-Tracker auf einen echten Scrollbereich umgestellt.
+- Weitere Folgequests und bis zu acht kommende Guide-Schritte werden unter den aktuellen Handlungen angezeigt.
+- Mausrad scrollt den Tracker; kommende Schritte können angeklickt und als aktueller Fokus geladen werden.
+- Neue Scroll-/Schritttexte für Deutsch und English ergänzt.
+
 ## [0.9.28-beta] – 2026-11-05
 
 - Tracker-Schritte um konkrete Handlungen erweitert: Quest annehmen, Questgeber/NPC, Zielgebiet mit Koordinaten, Questabgabe, Abgabe-NPC und Folgequest.
