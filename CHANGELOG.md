@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.19-beta] – 2026-11-05
+
+- Navigationsauflösung korrigiert: aktuelle Zonenkarte wird vor der Kontinentkarte berücksichtigt.
+- Forever-Classic-Builds setzen den Kartenkontext bei gleicher Questzone erneut, bevor „Gebietswechsel“ angezeigt wird.
+- Zielpunkte wie NPC, Item, Gegner und Abgabe bleiben dadurch innerhalb derselben Zone richtbar.
+- Release auf `0.9.19-beta` angehoben.
+
 ## [0.9.18-beta] – 2026-11-05
 
 - Neuer Tab „Schnell leveln“ mit einer vorausberechneten Solo-Questroute aus Questlog, ForeverDB und Live-Questdaten.
