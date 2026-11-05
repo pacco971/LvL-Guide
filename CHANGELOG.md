@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.31-beta] – 2026-11-05
+
+- Eigene Guide-Engine für Forever-Routen ergänzt: Questannahme, Ziele, Abgabe und Folgequest werden als getrennte Schritte geplant.
+- Eigene Reise-/Versorgungsstopps sowie Klassenlehrer-Meilensteine erscheinen im selben scrollbaren Tracker; Fähigkeiten werden erst aus dem geöffneten Trainerfenster übernommen.
+- Aktive Questlog-Schritte bleiben die höchste Priorität, während Zonen-, Ketten- und Routenfilter die nächsten unabhängigen Guide-Schritte ergänzen.
+- Tracker-Aktion für Trainer- und Reisestopps repariert; diese Schritte können nach der Durchführung sauber abgehakt werden.
+- Navigation erkennt jetzt auch eigene Schritte mit Zielpunkt, ohne die Questlog-Route zu überschreiben.
+- Englische UI-Bezeichnungen für die neuen Trainer-/Reisestopp-Schritte ergänzt.
+
 ## [0.9.30-beta] – 2026-11-05
 
 - XP-HUD auf ein klares, dreizeiliges Layout umgebaut: Levelzeit und Sitzungszeit oben, aktuelle XP
