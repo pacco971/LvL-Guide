@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.27-beta] – 2026-11-05
+
+- Kompaktes, eigenständiges Navigations-HUD: kleiner einzelner Dreieckspfeil, kein zweiter Glow und kein übergroßes oberes Navigationsfeld.
+- Der Pfeil folgt weiterhin dynamisch der Blickrichtung und aktualisiert Schritt, Entfernung/ETA sowie das gekürzte Ziel live.
+- XP-Vorschau als eigenes verschiebbares HUD: Ein/Aus, Breite, Höhe, Skalierung und Sperre im Menü.
+- Detaillierte Tracker-Schritte für Questannahme, NPC-Gespräch, Ziele, Abgabe, Abgabe-NPC und Folgequest ergänzt.
+- Englische Bezeichnungen für die neuen XP- und Tracker-Einstellungen ergänzt.
+
 ## [0.9.26-beta] – 2026-11-05
 
 - eigener **Questlog**-Tab: alle aktiven Quests statt eines festen Fünfer-Limits

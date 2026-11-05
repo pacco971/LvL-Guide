@@ -4,7 +4,9 @@ Eigenständiges Leveling- und Routen-Addon für **World of Warcraft: Forever**.
 
 ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, bewertet Alternativen und verfolgt deinen Fortschritt. Das Design und die Routenlogik sind eigenständig und enthalten keine RestedXP-Quelltexte, Grafiken, Texte oder geschützten Guide-Inhalte.
 
-Die aktuelle Beta-Version `0.9.26-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
+Die aktuelle Beta-Version `0.9.27-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
+
+Neu in `0.9.27-beta`: Die XP-Vorschau ist ein eigenes verschiebbares HUD mit Ein/Aus-Schalter, Breite, Höhe, Skalierung und Sperre. Der Navigationspfeil ist ein kleines einzelnes Widget ohne zweiten Glow-Pfeil: Schritt, Entfernung/ETA und ein gekürztes Ziel stehen sauber unter dem Pfeil. Der Pfeil folgt weiterhin live der Blickrichtung und wird nicht von einem separaten oberen Navigationsfeld überlagert.
 
 ## UI-Skizzen
 
@@ -42,10 +44,12 @@ Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Nav
 - **Minimap-Symbol:** Menü öffnen, verschieben oder per Rechtsklick Route analysieren
 - **Tracker:** zeigt aktuellen Schritt, Questziel, Fortschritt, Score, XP/h und Tode
 - **Navigations-HUD:** Richtung, Zielart, Entfernung und geschätzte Reisezeit
+- **Kompakter Richtungspfeil:** einzelner sauberer Pfeil, Schritt-/Entfernungszeile und Zielname; frei verschiebbar und mit dem UI sperrbar
 - **EP-Navigationsmodus:** passende Mob-Zielpunkte werden als Quest-/EP-Ziel priorisiert; die Schätzung wird aus beobachteten XP-Gewinnen verbessert
 - **Weltkarte:** Linie zum aktuellen Ziel und kommende Routenpunkte
 - **Reiseplan:** sortiert Fuß/Reittier, Flugpunkt, Schiff/Zeppelin, Hearthstone, Klassenreise und Zonenwechsel; unbestätigte Transportwege werden klar markiert
 - **Quest-XP-Projektion:** fertige Questbelohnungen werden als Vorschau über der Blizzard-XP-Leiste angezeigt; „LEVEL UP READY!“ wird nur bei ausreichender Summe eingeblendet
+- Die XP-Vorschau kann im Menü ausgeblendet, per Drag verschoben, in Breite/Höhe/Skalierung angepasst und gesperrt werden
 - **Dynamische TTG:** XP/h wird als gewichteter gleitender Wert über bis zu zehn Minuten berechnet und getrennt nach Kills, Quests und Reisezeit ausgewiesen
 - **Tooltip-Mobwert:** Mouseover-/Target-Tooltips zeigen geschätzte Mob-XP, Level-Prozent und Kills bis zum Level-Up
 - **Layer-Hinweis:** lokale Überfarm-Indikatoren und optionale ForeverGuild-Layerdaten führen zu einem Wechselvorschlag; das Addon wechselt Layer niemals selbstständig
