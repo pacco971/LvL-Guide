@@ -4,9 +4,11 @@ Eigenständiges Leveling- und Routen-Addon für **World of Warcraft: Forever**.
 
 ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, bewertet Alternativen und verfolgt deinen Fortschritt. Das Design und die Routenlogik sind eigenständig und enthalten keine RestedXP-Quelltexte, Grafiken, Texte oder geschützten Guide-Inhalte.
 
-Die aktuelle Beta-Version `0.9.27-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
+Die aktuelle Beta-Version `0.9.28-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
 
 Neu in `0.9.27-beta`: Die XP-Vorschau ist ein eigenes verschiebbares HUD mit Ein/Aus-Schalter, Breite, Höhe, Skalierung und Sperre. Der Navigationspfeil ist ein kleines einzelnes Widget ohne zweiten Glow-Pfeil: Schritt, Entfernung/ETA und ein gekürztes Ziel stehen sauber unter dem Pfeil. Der Pfeil folgt weiterhin live der Blickrichtung und wird nicht von einem separaten oberen Navigationsfeld überlagert.
+
+Neu in `0.9.28-beta`: Der Tracker beschreibt jetzt die konkrete Reihenfolge mit Annahmeort, Questgeber, Zielgebiet/Koordinaten, Abgabe-NPC und Folgequest. Zusätzlich wird der nächste Klassen- und Trainerstopp mit Stufe, Lernhinweis und Ort angezeigt. Nach dem Öffnen eines Trainerfensters listet ForeverPath die tatsächlich verfügbaren Fähigkeiten und den beobachteten Trainerort auf; ohne Scan bleibt es ausdrücklich eine Empfehlung.
 
 ## UI-Skizzen
 
@@ -45,6 +47,7 @@ Die geplante ForeverPath-Oberfläche ist in vier Bereichen skizziert: Route, Nav
 - **Tracker:** zeigt aktuellen Schritt, Questziel, Fortschritt, Score, XP/h und Tode
 - **Navigations-HUD:** Richtung, Zielart, Entfernung und geschätzte Reisezeit
 - **Kompakter Richtungspfeil:** einzelner sauberer Pfeil, Schritt-/Entfernungszeile und Zielname; frei verschiebbar und mit dem UI sperrbar
+- **Detaillierte Schrittanweisung:** Quest annehmen, mit welchem NPC sprechen, welche Ziele im Gebiet erledigen, wo abgeben, welche Folgequest annehmen und welcher Klassen-/Trainerstopp als Nächstes ansteht
 - **EP-Navigationsmodus:** passende Mob-Zielpunkte werden als Quest-/EP-Ziel priorisiert; die Schätzung wird aus beobachteten XP-Gewinnen verbessert
 - **Weltkarte:** Linie zum aktuellen Ziel und kommende Routenpunkte
 - **Reiseplan:** sortiert Fuß/Reittier, Flugpunkt, Schiff/Zeppelin, Hearthstone, Klassenreise und Zonenwechsel; unbestätigte Transportwege werden klar markiert

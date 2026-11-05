@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.28-beta] – 2026-11-05
+
+- Tracker-Schritte um konkrete Handlungen erweitert: Quest annehmen, Questgeber/NPC, Zielgebiet mit Koordinaten, Questabgabe, Abgabe-NPC und Folgequest.
+- Klassen-/Trainerhinweis in die Route aufgenommen: nächster Meilenstein mit Stufe und Ort; nach einem geöffneten Trainerfenster werden tatsächlich verfügbare Fähigkeiten und der beobachtete Ort angezeigt.
+- Klassen-Tab zeigt jeden Meilenstein jetzt mit einem Standort-Hinweis.
+- Trainerdaten bleiben clientbasiert: Ohne besuchtes Trainerfenster werden keine erfundenen Zaubernamen behauptet.
+- Neue Trackertexte vollständig für Deutsch und English ergänzt.
+
 ## [0.9.27-beta] – 2026-11-05
 
 - Kompaktes, eigenständiges Navigations-HUD: kleiner einzelner Dreieckspfeil, kein zweiter Glow und kein übergroßes oberes Navigationsfeld.
