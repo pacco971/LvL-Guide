@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.9.34-beta] – 2026-11-05
+
+- Tracker- und Guide-Fenster bereinigt: keine fehlerhaften Font-Kästchen durch nicht unterstützte Marker mehr.
+- Aktuelle und kommende Schritte werden mit sicheren Text-/Blizzard-Icons angezeigt.
+- Zonen werden im rechten Detailfenster nicht mehr doppelt an den Schritt-Titel angehängt.
+- Schließen-, Einklappen-, Guide- und Aktionsschaltflächen haben größere, zuverlässige Klickbereiche.
+- Drag-Header überdeckt die Fensterschaltflächen nicht mehr.
+
+## [0.9.33-beta] – 2026-11-05
+
+- Eigenen Guide-Katalog ergänzt: Skyborne, Allianz-/Horde-Startwege, Anschlussrouten und Magier-Varianten sind als auswählbare ForeverPath-Profile hinterlegt.
+- Guide-Auswahl mit automatischer Empfehlung nach Fraktion, Volk, Klasse und Level ergänzt; andere Startzonen derselben Fraktion bleiben manuell auswählbar.
+- Live-Questlog bleibt vorrangig und wird mit eigenen Reise-, Trainer- und Versorgungsstopps kombiniert.
+- Neues Auswahlfenster und englische UI-Schlüssel ergänzt; keine RXPGuides-/FlowUp-Routen, Texte oder Assets übernommen.
+
 ## [0.9.32-beta] – 2026-11-05
 
 - Eigenes Addon-Icon als 64x64-TGA ergänzt und im TOC korrekt verknüpft.
