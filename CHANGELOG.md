@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.15-beta] – 2026-11-05
+
+- Legacy-Unicode-Pfeil vollständig deaktiviert; das alte lila Kästchen kann nicht mehr im großen HUD erscheinen.
+- Pfeil aktualisiert jetzt etwa achtmal pro Sekunde und folgt Spielerposition sowie Blickrichtung geglättet.
+- Weltkoordinaten-Richtung für Gebietswechsel ergänzt, wenn der Forever-Client diese Kartenwerte liefert.
+- Quest-Vorschau zeigt den gesamten bekannten Questlog-Wert vorne an, zum Beispiel `6320 XP (9 Quests)`.
+- Fertige, noch abzugebende Quests werden separat als `Abgabe bereit` ausgewiesen und bestimmen weiterhin `LEVEL UP READY`.
+- Goldener Vorschau-Balken nutzt den Gesamtwert des Questlogs; die Bereitschaft bleibt korrekt auf fertige Quests begrenzt.
+- Release auf `0.9.15-beta` angehoben.
+
 ## [0.9.14-beta] – 2026-11-05
 
 - Navigationspfeil auf eine echte WoW-Minimap-Texture umgestellt; kein kaputtes Unicode-Kästchen mehr.
