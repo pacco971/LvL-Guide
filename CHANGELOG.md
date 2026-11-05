@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.13-beta] – 2026-11-05
+
+- Tracker-Feld vergrößert und neu ausgerichtet: Questtext, Zielbalken, Fortschritt und XP/TTG überlappen nicht mehr.
+- Der Tracker zeigt klar `QUEST ANNEHMEN` bzw. `QUEST ABGEBEN` und blendet eine direkte Questaktion ein.
+- Questaktionen arbeiten nur auf ausdrücklichen Button-Klick im geöffneten Blizzard-Questfenster; stille Hintergrund-Aktionen erlaubt der WoW-Client nicht.
+- Release auf `0.9.13-beta` angehoben.
+
 ## [0.9.12-beta] – 2026-11-05
 
 - Alte Navigation-SavedVariables werden beim Update vollständig entfernt; der HUD startet garantiert oben mittig.
