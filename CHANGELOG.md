@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.18-beta] – 2026-11-05
+
+- Neuer Tab „Schnell leveln“ mit einer vorausberechneten Solo-Questroute aus Questlog, ForeverDB und Live-Questdaten.
+- Bewertung berücksichtigt Levelpassung, aktuelle Zone, Kartenposition, Reiseaufwand, Folgequests, Koordinatenqualität und eigene XP-Messwerte.
+- Aktive Questlog-Schritte werden immer vor theoretischen Questangeboten eingeordnet.
+- Schnellmodus kann direkt im Tab aktiviert werden und verstärkt die Priorisierung der schnellen Solo-Route im Haupttracker.
+- Unbekannte Quest-XP wird sichtbar als Schätzung markiert; gemessene XP ersetzen die Schätzung automatisch.
+- Release auf `0.9.18-beta` angehoben.
+
 ## [0.9.17-beta] – 2026-11-05
 
 - Ingame-Dashboard auf sechs Karten ausgebaut: Navigation-HUD, Questtracker, Routen-Score, XP/TTG, Minimap-Route und Datenstatus.
