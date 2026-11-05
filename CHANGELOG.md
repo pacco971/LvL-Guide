@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.26-beta] – 2026-11-05
+
+- eigener **Questlog**-Tab: alle aktiven Quests statt eines festen Fünfer-Limits
+- Statuspunkte und Unterziele im Tracker mit Questlog-Fortschritt
+- Linksklick öffnet den eigenen Questlog, Rechtsklick setzt den Questfokus für Route und Pfeil
+- kleiner eigener Journey Log für angenommene/entfernte Quests
+- Klassen-Meilensteine für Trainer, Reittier, Reise, Waffen und Rollenfenster
+- Schnellroute bewertet Live-Questlog, Zone, Level, Questkette, Koordinaten, Fraktion und Klassenfilter
+- keine Laufzeit-Abhängigkeit von Questie; nur eigener Questlog-Scanner und mitgelieferte Daten
+
 ## [0.9.25-beta] – 2026-11-05
 
 - Navigation optisch bereinigt: dünne blaue Kernlinie mit dezentem Glow, ein goldener Zielring und ein einzelnes Zielnamen-Label; kommende blaue Punkte bleiben aus.

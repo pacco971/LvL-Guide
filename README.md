@@ -4,7 +4,7 @@ Eigenständiges Leveling- und Routen-Addon für **World of Warcraft: Forever**.
 
 ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, bewertet Alternativen und verfolgt deinen Fortschritt. Das Design und die Routenlogik sind eigenständig und enthalten keine RestedXP-Quelltexte, Grafiken, Texte oder geschützten Guide-Inhalte.
 
-Die aktuelle Beta-Version `0.9.25-beta` enthält questgenaue Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, einen Reiseplaner, Minimap- und Weltkarten-Navigation, einen **Gear & Rewards**-Tab, XP/h-Lernwerte, Trainer-/Berufsstopps, Gruppenlogik, Questketten-/Zonenfortschritt und Streamer-Layouts.
+Die aktuelle Beta-Version `0.9.26-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
 
 ## UI-Skizzen
 
