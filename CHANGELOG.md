@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.24-beta] – 2026-11-05
+
+- Neue Sprachumschaltung im Menü: Deutsch ↔ English, gespeichert pro Charakter.
+- Tabs, Einstellungen, Navigation, Questtracker, Onboarding und Statusanzeigen wechseln sofort mit.
+- Questtitel und Questziele bleiben bewusst in der Sprache des Forever-Clients/Questlogs, damit keine falschen Übersetzungen angezeigt werden.
+
 ## [0.9.23-beta] – 2026-11-05
 
 - Minimap-Button neu gestaltet: kompaktes Karten-Icon mit sauberem ForeverPath-Ring statt übergroßem, unscharfem Rahmen.
