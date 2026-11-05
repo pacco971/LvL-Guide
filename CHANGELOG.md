@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.9.21-beta] – 2026-11-05
+
+- Kritischer Navigationsfehler behoben: Forever liefert bei `GetWorldPosFromMapPos` teilweise Status `0` und den Vektor als zweiten Rückgabewert.
+- Der numerische Statuswert wird nicht mehr als Vektor behandelt; dadurch bricht der Tracker-Refresh nicht mehr ab.
+- Gear & Rewards zeigt Itemlevel als Fallback, wenn der Forever-Client keine Stat-Tabelle liefert, statt leer zu bleiben.
+- Klassenansicht erhält immer ein erkennbares Profil mit Klasse, Stufe, Rolle und Datenstatus.
+- Einstellungsseite auf die tatsächlich relevanten Route-, HUD- und Support-Schalter reduziert.
+- Questtitel bevorzugen jetzt den lokalisierten Titel aus dem Questlog gegenüber englischen ForeverDB-Quelltiteln.
+
+## [0.9.20-beta] – 2026-11-05
+
+- Karten-Weltkoordinaten-Rückgabe abgesichert: Forever kann Status `0` plus Vektorobjekt zurückgeben.
+- `Navigation.lua` behandelt numerische Statuswerte nicht mehr fälschlich als Vektor und verhindert dadurch den Tracker-Fehler an Zeile 107.
+- Release auf `0.9.20-beta` angehoben.
+
 ## [0.9.19-beta] – 2026-11-05
 
 - Navigationsauflösung korrigiert: aktuelle Zonenkarte wird vor der Kontinentkarte berücksichtigt.
