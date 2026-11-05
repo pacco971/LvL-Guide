@@ -4,13 +4,15 @@ Eigenständiges Leveling- und Routen-Addon für **World of Warcraft: Forever**.
 
 ForeverPath zeigt dir den nächsten sinnvollen Questschritt, setzt Wegpunkte, bewertet Alternativen und verfolgt deinen Fortschritt. Das Design und die Routenlogik sind eigenständig und enthalten keine RestedXP-Quelltexte, Grafiken, Texte oder geschützten Guide-Inhalte.
 
-Die aktuelle Beta-Version `0.9.29-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
+Die aktuelle Beta-Version `0.9.30-beta` enthält einen eigenen Questlog-Tab mit allen aktiven Quests, Fokussteuerung per Rechtsklick, Statuspunkte und Unterziele im Tracker, Klassen-Meilensteine für Trainer-/Reise-/Ausrüstungsstopps, questlogbasierte Schnellrouten sowie die bisherigen questgenauen Annahme-/Ziel-/Abgabeschritte, aktuelle-Zone-Filter, automatische Route-Recovery, Reiseplaner, Minimap- und Weltkarten-Navigation, **Gear & Rewards**, XP/h-Lernwerte und Streamer-Layouts.
 
 Neu in `0.9.27-beta`: Die XP-Vorschau ist ein eigenes verschiebbares HUD mit Ein/Aus-Schalter, Breite, Höhe, Skalierung und Sperre. Der Navigationspfeil ist ein kleines einzelnes Widget ohne zweiten Glow-Pfeil: Schritt, Entfernung/ETA und ein gekürztes Ziel stehen sauber unter dem Pfeil. Der Pfeil folgt weiterhin live der Blickrichtung und wird nicht von einem separaten oberen Navigationsfeld überlagert.
 
 Neu in `0.9.28-beta`: Der Tracker beschreibt jetzt die konkrete Reihenfolge mit Annahmeort, Questgeber, Zielgebiet/Koordinaten, Abgabe-NPC und Folgequest. Zusätzlich wird der nächste Klassen- und Trainerstopp mit Stufe, Lernhinweis und Ort angezeigt. Nach dem Öffnen eines Trainerfensters listet ForeverPath die tatsächlich verfügbaren Fähigkeiten und den beobachteten Trainerort auf; ohne Scan bleibt es ausdrücklich eine Empfehlung.
 
 Neu in `0.9.29-beta`: Der Ingame-Tracker hat jetzt einen echten Scrollbereich. Die aktuellen Anweisungen bleiben oben, darunter erscheinen weitere Folgequests und bis zu acht kommende Guide-Schritte. Mausrad scrollt, zukünftige Schritte können angeklickt werden und laden sofort als Fokus für Tracker und Pfeil.
+
+Neu in `0.9.30-beta`: Die XP-Anzeige ist jetzt ein eigenes, dreizeiliges HUD. Oben stehen die Zeit auf dem aktuellen Level und die Sitzungszeit, in der Mitte aktuelle XP mit Level und Fortschrittsbalken, unten ETA, gemessene XP pro Stunde, abgeschlossene Quest-XP, Erholungsbonus und die XP aus dem Questlog. Breite, Höhe, Skalierung, Position und Sperre bleiben im Menü einstellbar. Die Anzeige verwendet ein eigenständiges Layout und keine RestedXP-Quelltexte oder geschützten Grafiken.
 
 ## UI-Skizzen
 

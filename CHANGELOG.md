@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.30-beta] – 2026-11-05
+
+- XP-HUD auf ein klares, dreizeiliges Layout umgebaut: Levelzeit und Sitzungszeit oben, aktuelle XP
+  mit Prozentwert in der Mitte und ETA/XP pro Stunde/Questlog-XP unten.
+- Questlog-Projektion bleibt als goldene Vorschau sichtbar; die tatsächlich vorhandene XP wird als
+  eigener farbiger Balken darüber dargestellt.
+- Abgeschlossene Quest-XP, Erholungsbonus und `LEVEL UP READY!` werden direkt im HUD angezeigt.
+- XP-Anzeige standardmäßig größer und weiterhin über das Menü verschiebbar, skalierbar, in der Größe
+  änderbar, ein-/ausblendbar und sperrbar.
+- Englische Sprachschlüssel für die neuen XP-HUD-Texte ergänzt.
+
 ## [0.9.29-beta] – 2026-11-05
 
 - Ingame-Tracker auf einen echten Scrollbereich umgestellt.
