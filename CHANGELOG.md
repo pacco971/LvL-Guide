@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.35-beta] – 2026-11-06
+
+- ForeverDB-Importer erweitert: optionale Build-/Hotfix-Endpunkte (`builds`, `builds/latest`, `buffs-nerfs`, `merchants-favor`) werden mit Retry und Fallback verarbeitet; ein temporärer 502-Fehler bricht den Questimport nicht mehr ab.
+- Datenstatus zeigt jetzt den statischen ForeverDB-Build, Hotfix-Zähler und den Zeitpunkt des letzten Extended-Imports transparent an.
+- Questdetails führen den aktuellen Schritt sauber als **Annehmen → Questgeber → Ziele → Abgabe → Folgequest** auf, mit Live-Questlog-Objektiven und ForeverDB-Koordinaten, sofern vorhanden.
+- Reiseplan ergänzt Distanz und ETA für bestätigte Weltkoordinaten; unbekannte Schiffs-/Flug-/Hearthstone-Wege bleiben klar als unbestätigt markiert.
+- Tracker und Route-Dashboard verwenden die detaillierte Schrittzusammenfassung, ohne Roh-IDs oder doppelte Zonen in den Haupttext zu quetschen.
+- Fehlerbericht enthält jetzt den Forever-Client-Kompatibilitätsstatus und den Hotfix-Datenstatus.
+- Keine API-Schlüssel, RestedXP-/FlowUp-Routen, geschützten Texte oder geschützten Assets in der ZIP.
+
 ## [0.9.34-beta] – 2026-11-05
 
 - Tracker- und Guide-Fenster bereinigt: keine fehlerhaften Font-Kästchen durch nicht unterstützte Marker mehr.

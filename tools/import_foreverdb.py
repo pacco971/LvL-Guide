@@ -34,6 +34,17 @@ EXTENDED_ENDPOINTS = {
     "spells": {"path": "spells"},
 }
 
+# These endpoints are small, optional and useful when the quest snapshot has
+# the same build number but the live client received a hotfix.  They are kept
+# separate from the large collections so a temporary 502 cannot invalidate a
+# complete quest import.
+HOTFIX_ENDPOINTS = {
+    "builds": "builds",
+    "latestBuild": "builds/latest",
+    "buffsNerfs": "buffs-nerfs",
+    "merchantsFavor": "merchants-favor",
+}
+
 
 def request_json(api_key, path, params=None):
     query = urllib.parse.urlencode(params or {})
@@ -48,6 +59,7 @@ def request_json(api_key, path, params=None):
             "User-Agent": "ForeverPathDataImporter/0.10 (+https://foreverdb.net)",
         },
     )
+    attempts = 0
     while True:
         try:
             with urllib.request.urlopen(request, timeout=30) as response:
@@ -55,9 +67,25 @@ def request_json(api_key, path, params=None):
         except urllib.error.HTTPError as error:
             if error.code == 404:
                 return {}
-            if error.code != 429:
-                raise
-            time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
+            if error.code == 429:
+                time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
+                continue
+            if 500 <= error.code < 600:
+                attempts += 1
+                if attempts >= 5:
+                    raise
+                time.sleep(min(30, 2 ** attempts))
+                continue
+            raise
+
+
+def request_optional_json(api_key, path):
+    """Read a small optional endpoint without failing the core snapshot."""
+    try:
+        return request_json(api_key, path)
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError) as error:
+        print(f"warnung: optionaler Endpoint {path} nicht verfügbar: {error}")
+        return {"meta": {"endpoint": path, "warning": str(error)}, "data": []}
 
 
 def request_page(api_key, offset):
@@ -315,6 +343,14 @@ def main():
             print(f"lade: dungeons/{dungeon_id}")
             details[str(dungeon_id)] = request_detail(api_key, "dungeons", dungeon_id)
         supplemental["dungeonDetails"] = details
+
+        hotfixes = {"meta": {"profile": "optional-hotfix", "source": "ForeverDB.net"}}
+        for key, path in HOTFIX_ENDPOINTS.items():
+            print(f"prüfe optional: {path}")
+            hotfixes[key] = request_optional_json(api_key, path)
+        supplemental["hotfixes"] = hotfixes
+        supplemental["meta"]["hotfixEndpoints"] = list(HOTFIX_ENDPOINTS.values())
+        supplemental["meta"]["refreshedAtUtc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     with SUPPLEMENTAL_OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("-- GENERATED from the ForeverDB API.\n")
         handle.write("-- Source: https://foreverdb.net/developers\n")
