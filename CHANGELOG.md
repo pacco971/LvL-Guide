@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.37-beta] – 2026-11-06
+
+- Added a defensive NPC telemetry layer for local tooltip context: faction relationship, observed level/range, and unit classification/rank are shown when the Forever client exposes them.
+- Added localized reputation tracking from the client's faction-change messages and short-window attribution to the most recently turned-in quest.
+- Added NPC observation and quest-reputation counts to the diagnostics export for reproducible Discord bug reports.
+- Added English localization for the new NPC tooltip text; trace-data decoder and submission features from unrelated tools are intentionally not included.
+
 ## [0.9.36-beta] – 2026-11-06
 
 - Added an independent quest-objective marker layer for the Forever client. Known quest targets, collectable/item objectives, and ready-to-turn-in quests can now appear directly on the minimap when they are nearby.
