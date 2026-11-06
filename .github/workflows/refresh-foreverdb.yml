@@ -1,6 +1,9 @@
 name: Refresh ForeverPath from ForeverDB
 
 on:
+  push:
+    paths:
+      - '.github/refresh-foreverdb.trigger'
   schedule:
     - cron: '17 3 * * *'
   workflow_dispatch:

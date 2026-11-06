@@ -21,6 +21,8 @@ Der Importer behandelt den Schlüssel ausschließlich im Speicher und schreibt i
 
 ## Automatischer Refresh
 
+Der Workflow läuft regulär täglich und kann über **Actions → Refresh ForeverPath from ForeverDB → Run workflow** gestartet werden. Als Login-unabhängiger Fallback startet ein Push auf `.github/refresh-foreverdb.trigger` ausschließlich diesen Datenrefresh.
+
 Der Workflow [`.github/workflows/refresh-foreverdb.yml`](./.github/workflows/refresh-foreverdb.yml) prüft ForeverDB täglich und kann zusätzlich manuell gestartet werden. Er verwendet den Extended-Lauf, baut die ZIP nur bei einem tatsächlich geänderten Datenstand neu, lädt sie anschließend zu CurseForge hoch und speichert die aktualisierte `ForeverPath.zip` wieder im Repository.
 
 Dafür müssen unter den GitHub-Repository-Secrets vorhanden sein:
