@@ -2,13 +2,13 @@
 
 ## [0.9.35-beta] – 2026-11-06
 
-- ForeverDB-Importer erweitert: optionale Build-/Hotfix-Endpunkte (`builds`, `builds/latest`, `buffs-nerfs`, `merchants-favor`) werden mit Retry und Fallback verarbeitet; ein temporärer 502-Fehler bricht den Questimport nicht mehr ab.
-- Datenstatus zeigt jetzt den statischen ForeverDB-Build, Hotfix-Zähler und den Zeitpunkt des letzten Extended-Imports transparent an.
-- Questdetails führen den aktuellen Schritt sauber als **Annehmen → Questgeber → Ziele → Abgabe → Folgequest** auf, mit Live-Questlog-Objektiven und ForeverDB-Koordinaten, sofern vorhanden.
-- Reiseplan ergänzt Distanz und ETA für bestätigte Weltkoordinaten; unbekannte Schiffs-/Flug-/Hearthstone-Wege bleiben klar als unbestätigt markiert.
-- Tracker und Route-Dashboard verwenden die detaillierte Schrittzusammenfassung, ohne Roh-IDs oder doppelte Zonen in den Haupttext zu quetschen.
-- Fehlerbericht enthält jetzt den Forever-Client-Kompatibilitätsstatus und den Hotfix-Datenstatus.
-- Keine API-Schlüssel, RestedXP-/FlowUp-Routen, geschützten Texte oder geschützten Assets in der ZIP.
+- Extended the ForeverDB importer with optional build/hotfix endpoints (`builds`, `builds/latest`, `buffs-nerfs`, `merchants-favor`), retries, and graceful fallbacks so a temporary 502 no longer aborts the quest import.
+- Added transparent data status for the static ForeverDB build, hotfix counters, and the last extended import timestamp.
+- Added structured quest-step details: **accept → quest giver → objectives → turn-in → follow-up quest**, using live quest-log objectives and ForeverDB coordinates when available.
+- Added distance and ETA to the travel planner for confirmed world coordinates; unknown ship, flight, and Hearthstone paths remain explicitly marked as unconfirmed.
+- Updated the tracker and route dashboard to use the detailed step summary without raw IDs or duplicated zone names in the main text.
+- Added Forever client compatibility and hotfix data status to exported diagnostics.
+- The ZIP contains no API keys, RestedXP/FlowUp routes, protected text, or protected assets.
 
 ## [0.9.34-beta] – 2026-11-05
 
