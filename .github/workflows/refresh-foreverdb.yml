@@ -9,6 +9,12 @@ on:
   schedule:
     - cron: '17 3 * * *'
   workflow_dispatch:
+    inputs:
+      extended:
+        description: 'Load optional item/spell/vendor and dungeon detail endpoints (slow)'
+        required: false
+        default: false
+        type: boolean
 
 # Serialize scheduled and manual checks so the same data build is never
 # processed twice at the same time.
@@ -49,7 +55,16 @@ jobs:
         shell: bash
         env:
           FOREVERDB_API_KEY: ${{ secrets.FOREVERDB_API_KEY }}
-        run: python tools/refresh_foreverdb.py
+          EXTENDED_IMPORT: ${{ inputs.extended || false }}
+        run: |
+          args=()
+          if [[ "$EXTENDED_IMPORT" == "true" ]]; then
+            args+=(--extended)
+            echo "Running the optional extended ForeverDB import."
+          else
+            echo "Running the fast core ForeverDB import. Use the manual 'extended' input for optional large endpoints."
+          fi
+          python tools/refresh_foreverdb.py "${args[@]}"
 
       - name: Upload the changed archive to CurseForge
         if: steps.refresh.outputs.data_changed == 'true'
