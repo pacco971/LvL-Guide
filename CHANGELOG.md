@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.36-beta] – 2026-11-06
+
+- Added an independent quest-objective marker layer for the Forever client. Known quest targets, collectable/item objectives, and ready-to-turn-in quests can now appear directly on the minimap when they are nearby.
+- Added marker filtering and layout controls: quest markers on/off, item/loot markers on/off, adjustable nearby radius, marker limit, and optional labels.
+- Added minimap tooltips with the target name, quest title, completion state, approximate map distance, and the visible ForeverPath/quest-log source.
+- Added English localization for every new marker setting and tooltip string.
+- The marker system uses ForeverPath's live quest log and bundled public data; it does not require Questie at runtime and contains no API key.
+
 ## [0.9.35-beta] – 2026-11-06
 
 - Extended the ForeverDB importer with optional build/hotfix endpoints (`builds`, `builds/latest`, `buffs-nerfs`, `merchants-favor`), retries, and graceful fallbacks so a temporary 502 no longer aborts the quest import.
