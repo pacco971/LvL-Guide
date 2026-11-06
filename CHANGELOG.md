@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.38-beta] – 2026-11-06
+
+- Refreshed the packaged ForeverDB snapshot to build `1.60.1.70790`.
+- Rebuilt the release archive with the current quest, dungeon, item, spell and supplemental data while preserving the independent ForeverPath UI and telemetry features.
+- Changed the scheduled refresh workflow to use the fast core import by default; optional large endpoints can be requested explicitly from a manual workflow run.
+
 ## [0.9.37-beta] – 2026-11-06
 
 - Added a defensive NPC telemetry layer for local tooltip context: faction relationship, observed level/range, and unit classification/rank are shown when the Forever client exposes them.
