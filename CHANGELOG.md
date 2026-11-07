@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.39-beta] – 2026-11-07
+
+- Reworked the in-game route view into a compact, scrollable ForeverPath guide layout with three upcoming action callouts, a wider step list, and a dedicated next-step detail panel.
+- Added clear Blizzard step icons for quests, turn-ins, travel stops, and trainer/ability actions, plus reliable left-click selection and right-click actions across the guide rows.
+- Added route progress numbering, step tooltips, and a cleaner action footer while preserving the independent ForeverPath visual style.
+- Refreshed the bundled ForeverDB snapshot to build `1.60.1.70862`, including the latest verified hotfix and class/item data.
+- Kept the package independent: no RestedXP/FlowUp source, assets, protected guide text, or API keys are included.
+
 ## [0.9.38-beta] – 2026-11-06
 
 - Refreshed the packaged ForeverDB snapshot to build `1.60.1.70790`.
