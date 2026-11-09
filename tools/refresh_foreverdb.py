@@ -8,6 +8,7 @@ the addon archive or to the repository.
 from __future__ import annotations
 
 import hashlib
+import argparse
 import os
 import re
 import shutil
@@ -98,6 +99,16 @@ def set_output(name: str, value: str) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Refresh the static ForeverDB snapshot without storing the API key."
+    )
+    parser.add_argument(
+        "--extended",
+        action="store_true",
+        help="also import large item/spell/vendor collections and hotfix snapshots",
+    )
+    args = parser.parse_args()
+
     if not SOURCE_ARCHIVE.is_file() or SOURCE_ARCHIVE.stat().st_size == 0:
         raise RuntimeError(f"Missing release archive: {SOURCE_ARCHIVE}")
 
@@ -119,12 +130,10 @@ def main() -> int:
             "FOREVERDB_API_KEY is missing. Add it as a GitHub Actions secret."
         )
 
-    subprocess.run(
-        [sys.executable, str(REPO_ROOT / "tools" / "import_foreverdb.py"), "--extended"],
-        cwd=REPO_ROOT,
-        env=env,
-        check=True,
-    )
+    import_command = [sys.executable, str(REPO_ROOT / "tools" / "import_foreverdb.py")]
+    if args.extended:
+        import_command.append("--extended")
+    subprocess.run(import_command, cwd=REPO_ROOT, env=env, check=True)
 
     new_digest = dataset_digest(STAGED_ADDON)
     data_build = read_build(STAGED_ADDON)

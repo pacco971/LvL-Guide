@@ -45,6 +45,19 @@ HOTFIX_ENDPOINTS = {
     "merchantsFavor": "merchants-favor",
 }
 
+# Server-side hotfixes do not change the client build and therefore cannot be
+# discovered reliably from the normal build snapshot. Keep these facts in the
+# generated data package with a source link so route scoring can use them
+# without contacting the API from inside WoW.
+KNOWN_SERVER_HOTFIXES = {
+    "dungeonKillXP": {
+        "multiplier": 1.5,
+        "effectiveDate": "2026-11-08",
+        "source": "https://foreverdb.net/article/dungeon-kill-xp-increased-november-8",
+        "scope": "dungeon enemy kill XP only; dungeon quest XP is unchanged",
+    },
+}
+
 
 def request_json(api_key, path, params=None):
     query = urllib.parse.urlencode(params or {})
@@ -349,6 +362,7 @@ def main():
             print(f"prüfe optional: {path}")
             hotfixes[key] = request_optional_json(api_key, path)
         supplemental["hotfixes"] = hotfixes
+        supplemental["serverHotfixes"] = KNOWN_SERVER_HOTFIXES
         supplemental["meta"]["hotfixEndpoints"] = list(HOTFIX_ENDPOINTS.values())
         supplemental["meta"]["refreshedAtUtc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     with SUPPLEMENTAL_OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:

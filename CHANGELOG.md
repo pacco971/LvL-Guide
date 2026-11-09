@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.9.41-beta] – 2026-11-09
+
+- Added detailed per-point guide previews to the route list and the standalone guide tracker.
+- Added tooltip details for quest acceptance, NPC/giver, objectives, target location, turn-in, follow-up quests, training stops and data source.
+- Added Blizzard-icon markers to action previews while keeping the layout and wording independent from third-party guide addons.
+- Kept the live quest-log steps authoritative; authored route points now show their explanation instead of a generic zone-only summary.
+
+## [0.9.40-beta] – 2026-11-09
+
+- Added the documented 50% dungeon enemy kill-XP server hotfix to the generated ForeverDB snapshot; route scoring applies it only to dungeon mob XP, not dungeon quest XP.
+- Added live quest-giver offer validation. Class-specific or otherwise unavailable quests are removed from the route, tracker, map markers, and stale waypoint state until the giver offers them again.
+- Added defensive quest-log index validation so index `0` is never treated as an active quest entry.
+- Cleared saved user waypoints when their quest is removed or turned in, and invalidated related route/marker caches.
+- Improved minimap marker classification by using objective types for items, enemies, and collection targets before falling back to text matching.
+- Added extraction timestamp, item/spell counts, and server-hotfix status to the visible ForeverDB data overview.
+- Fixed the refresh wrapper so the workflow's fast/core and optional extended modes are actually respected; routine scans no longer force every large endpoint.
+- Kept the release independent: no RestedXP/FlowUp source, protected guide text/assets, or API key is included.
+
 ## [0.9.39-beta] – 2026-11-07
 
 - Reworked the in-game route view into a compact, scrollable ForeverPath guide layout with three upcoming action callouts, a wider step list, and a dedicated next-step detail panel.
