@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.42-beta] – 2026-11-12
+
+- Added safe quest-gold detection from the live quest log, reward window, and public ForeverDB records.
+- Added a capped quest-gold bonus to route and fast-route scoring without changing XP calculations.
+- Added quest-gold totals to the XP projection, Gear & Rewards view, and detailed guide steps.
+- Reset reward-money caches after quest scans and data-build changes so displayed rewards stay current.
+- Updated the bundled public ForeverDB snapshot to build `1.60.1.70888`; no API key is included.
+
 ## [0.9.41-beta] – 2026-11-09
 
 - Added detailed per-point guide previews to the route list and the standalone guide tracker.

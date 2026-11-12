@@ -231,6 +231,11 @@ def normalize(item):
         "category": item.get("category"),
         "zone": {"name": zone.get("n"), "mapID": zone.get("m"), "slug": zone.get("slug")},
         "knownInForever": item.get("knownInForever"),
+        # Keep reward values when ForeverDB exposes them.  Older snapshots do
+        # not provide money for every quest; the addon then falls back to the
+        # live quest-log API instead of inventing a value.
+        "rewardXP": item.get("rewardXP") or item.get("xpReward") or item.get("experienceReward"),
+        "rewardMoney": item.get("rewardMoney") or item.get("moneyReward") or item.get("goldReward"),
         "source": source,
         "start": endpoint(item.get("starts")),
         "turnIn": endpoint(item.get("ends")),
