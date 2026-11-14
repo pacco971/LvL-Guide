@@ -55,7 +55,10 @@ jobs:
         shell: bash
         env:
           FOREVERDB_API_KEY: ${{ secrets.FOREVERDB_API_KEY }}
-          EXTENDED_IMPORT: ${{ inputs.extended || false }}
+          # A maintainer can request a one-off extended refresh from a normal
+          # push by adding [extended-refresh] to the commit message.  Routine
+          # scheduled runs stay on the fast core import.
+          EXTENDED_IMPORT: ${{ inputs.extended || contains(github.event.head_commit.message, '[extended-refresh]') }}
         run: |
           args=()
           if [[ "$EXTENDED_IMPORT" == "true" ]]; then

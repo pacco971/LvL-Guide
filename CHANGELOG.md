@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.43-beta] – 2026-11-14
+
+- Updated the bundled public ForeverDB snapshot to build `1.60.1.70938` after the latest Forever hotfix data refresh.
+- Applied the trivial-enemy dungeon XP hotfix safely: the 1.5x dungeon-mob value is used only when the group is eligible, while confirmed-trivial enemies contribute no kill-XP value.
+- Hardened quest-objective markers so item icons require structured item/object evidence instead of localized text guesses.
+- Added a visible hotfix/data-build status to the refresh path and kept all reward/gear caches invalidated after data changes.
+- No API key is bundled in the addon.
+
 ## [0.9.42-beta] – 2026-11-12
 
 - Added safe quest-gold detection from the live quest log, reward window, and public ForeverDB records.
