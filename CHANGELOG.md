@@ -6,6 +6,8 @@
 - Added level-range submenus and route entries based on the provided unencrypted Horde guide headings.
 - Connected menu selections to the active Horde speed or dungeon route and reset route progress safely on selection.
 - Added clear menu actions for options, diagnostics, level report, feedback guidance, and closing the menu.
+- Reworked the main interface with the ForeverPath navy/cyan/gold dashboard style: route cards, numbered HUD sections, active-state tabs, and a live route/data overview.
+- Replaced the old Blizzard button skin with aligned native controls that keep the visible button and click area in the same place.
 - Kept the menu visually independent from third-party addon code and assets.
 
 ## [0.9.43-beta] – 2026-11-14
