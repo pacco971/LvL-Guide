@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.44-beta] – 2026-11-17
+
+- Added a native right-click Horde guide menu with nested Dungeon Guide, Fastest Route, and Dungeon Quest categories.
+- Added level-range submenus and route entries based on the provided unencrypted Horde guide headings.
+- Connected menu selections to the active Horde speed or dungeon route and reset route progress safely on selection.
+- Added clear menu actions for options, diagnostics, level report, feedback guidance, and closing the menu.
+- Kept the menu visually independent from third-party addon code and assets.
+
 ## [0.9.43-beta] – 2026-11-14
 
 - Updated the bundled public ForeverDB snapshot to build `1.60.1.70938` after the latest Forever hotfix data refresh.
