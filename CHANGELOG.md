@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.45-beta] – 2026-11-22
+
+- Updated the Forever hotfix snapshot with the 1.5x dungeon-mob XP rule, the zero-XP trivial-party rule, and the five-entries-per-hour dungeon reset limit.
+- Made the ForeverDB metadata timestamp and server-hotfix rules available in both core and extended refresh profiles.
+- Prevented a fast core refresh from downgrading an existing extended data snapshot; scheduled refreshes now use the extended profile.
+- Made level-range menu selections load the matching route slice and fixed submenu placement near screen edges so panels no longer cover their own click targets.
+- Improved objective classification across all unfinished objectives and tagged quest waypoints with their quest ID so removed or turned-in quests clear saved arrows reliably.
+- Hardened ForeverDB network retries for temporary timeouts, connection failures, rate limits, and server errors.
+
 ## [0.9.44-beta] – 2026-11-17
 
 - Added a native right-click Horde guide menu with nested Dungeon Guide, Fastest Route, and Dungeon Quest categories.

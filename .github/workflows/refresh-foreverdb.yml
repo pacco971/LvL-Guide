@@ -56,16 +56,17 @@ jobs:
         env:
           FOREVERDB_API_KEY: ${{ secrets.FOREVERDB_API_KEY }}
           # A maintainer can request a one-off extended refresh from a normal
-          # push by adding [extended-refresh] to the commit message.  Routine
-          # scheduled runs stay on the fast core import.
-          EXTENDED_IMPORT: ${{ inputs.extended || contains(github.event.head_commit.message, '[extended-refresh]') }}
+          # push by adding [extended-refresh] to the commit message. Scheduled
+          # refreshes also use the extended profile so the package never loses
+          # item/spell/vendor/dungeon detail data between nightly updates.
+          EXTENDED_IMPORT: ${{ inputs.extended || contains(github.event.head_commit.message, '[extended-refresh]') || github.event_name == 'schedule' }}
         run: |
           args=()
           if [[ "$EXTENDED_IMPORT" == "true" ]]; then
             args+=(--extended)
             echo "Running the optional extended ForeverDB import."
           else
-            echo "Running the fast core ForeverDB import. Use the manual 'extended' input for optional large endpoints."
+            echo "Running the fast core ForeverDB import."
           fi
           python tools/refresh_foreverdb.py "${args[@]}"
 

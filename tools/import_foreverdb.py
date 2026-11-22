@@ -53,10 +53,34 @@ KNOWN_SERVER_HOTFIXES = {
     "dungeonKillXP": {
         "multiplier": 1.5,
         "effectiveDate": "2026-11-08",
-        "source": "https://foreverdb.net/article/dungeon-kill-xp-increased-november-8",
+        "source": "https://news.blizzard.com/en-gb/article/24315281/wow-forever-hotfixes-november-20-2026",
         "scope": "dungeon enemy kill XP only; dungeon quest XP is unchanged",
     },
+    "dungeonTrivialPartyXP": {
+        "multiplier": 0,
+        "effectiveDate": "2026-11-13",
+        "source": "https://news.blizzard.com/en-gb/article/24315281/wow-forever-hotfixes-november-20-2026",
+        "scope": "if the enemy is trivial to at least one party member, all party members receive zero enemy kill XP",
+    },
+    "dungeonResetLimit": {
+        "maxEntriesPerHour": 5,
+        "effectiveDate": "2026-11-20",
+        "source": "https://news.blizzard.com/en-gb/article/24315281/wow-forever-hotfixes-november-20-2026",
+        "scope": "per dungeon instance",
+    },
 }
+
+
+TRANSIENT_ERRORS = (urllib.error.URLError, TimeoutError)
+
+
+def retry_delay(error, attempts, default=5):
+    headers = getattr(error, "headers", None)
+    retry_after = headers.get("Retry-After") if headers else None
+    try:
+        return max(1, min(60, int(retry_after)))
+    except (TypeError, ValueError):
+        return min(60, max(default, 2 ** min(attempts, 5)))
 
 
 def request_json(api_key, path, params=None):
@@ -81,7 +105,10 @@ def request_json(api_key, path, params=None):
             if error.code == 404:
                 return {}
             if error.code == 429:
-                time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
+                attempts += 1
+                if attempts >= 8:
+                    raise
+                time.sleep(retry_delay(error, attempts))
                 continue
             if 500 <= error.code < 600:
                 attempts += 1
@@ -90,6 +117,11 @@ def request_json(api_key, path, params=None):
                 time.sleep(min(30, 2 ** attempts))
                 continue
             raise
+        except TRANSIENT_ERRORS:
+            attempts += 1
+            if attempts >= 5:
+                raise
+            time.sleep(min(30, 2 ** attempts))
 
 
 def request_optional_json(api_key, path):
@@ -111,15 +143,28 @@ def request_page(api_key, offset):
             "User-Agent": "ForeverPathDataImporter/0.7 (+https://foreverdb.net)",
         },
     )
+    attempts = 0
     while True:
         try:
             with urllib.request.urlopen(request, timeout=30) as response:
                 return json.load(response)
         except urllib.error.HTTPError as error:
             if error.code != 429:
+                if 500 <= error.code < 600:
+                    attempts += 1
+                    if attempts < 5:
+                        time.sleep(min(30, 2 ** attempts))
+                        continue
                 raise
-            retry_after = int(error.headers.get("Retry-After", "5"))
-            time.sleep(max(1, retry_after))
+            attempts += 1
+            if attempts >= 8:
+                raise
+            time.sleep(retry_delay(error, attempts))
+        except TRANSIENT_ERRORS:
+            attempts += 1
+            if attempts >= 5:
+                raise
+            time.sleep(min(30, 2 ** attempts))
 
 
 def request_collection(api_key, endpoint, extra_params=None, allow_transient_failure=False):
@@ -153,6 +198,14 @@ def request_collection(api_key, endpoint, extra_params=None, allow_transient_fai
                         time.sleep(min(60, 5 * (2 ** (attempts - 1))))
                         continue
                 raise
+            except TRANSIENT_ERRORS as error:
+                attempts += 1
+                if attempts >= 5:
+                    if allow_transient_failure:
+                        print(f"warnung: {endpoint} ist nicht erreichbar; Endpoint wird für diesen Lauf übersprungen")
+                        return {"meta": {"endpoint": endpoint, "warning": str(error)}, "data": []}
+                    raise
+                time.sleep(min(30, 2 ** attempts))
         last_meta = page.get("meta", {})
         total = int(last_meta.get("total", 0))
         records.extend(page.get("data", []))
@@ -171,14 +224,28 @@ def request_detail(api_key, endpoint, resource_id):
             "User-Agent": "ForeverPathDataImporter/0.9 (+https://foreverdb.net)",
         },
     )
+    attempts = 0
     while True:
         try:
             with urllib.request.urlopen(request, timeout=30) as response:
                 return json.load(response)
         except urllib.error.HTTPError as error:
             if error.code != 429:
+                if 500 <= error.code < 600:
+                    attempts += 1
+                    if attempts < 5:
+                        time.sleep(min(30, 2 ** attempts))
+                        continue
                 raise
-            time.sleep(max(1, int(error.headers.get("Retry-After", "5"))))
+            attempts += 1
+            if attempts >= 8:
+                raise
+            time.sleep(retry_delay(error, attempts))
+        except TRANSIENT_ERRORS:
+            attempts += 1
+            if attempts >= 5:
+                raise
+            time.sleep(min(30, 2 ** attempts))
 
 
 def endpoint(value):
@@ -335,7 +402,17 @@ def main():
     if args.extended:
         endpoint_specs.update(EXTENDED_ENDPOINTS)
 
-    supplemental = {"meta": {"profile": "extended" if args.extended else "core"}}
+    refreshed_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    supplemental = {
+        "meta": {
+            "profile": "extended" if args.extended else "core",
+            "questBuild": build,
+            "refreshedAtUtc": refreshed_at,
+        },
+        # Keep server-side rules in the small core snapshot as well. They do
+        # not depend on the optional large API collections.
+        "serverHotfixes": KNOWN_SERVER_HOTFIXES,
+    }
     for key, spec in endpoint_specs.items():
         print(f"lade: {spec['path']}")
         supplemental[key] = compact_collection(
@@ -367,9 +444,7 @@ def main():
             print(f"prüfe optional: {path}")
             hotfixes[key] = request_optional_json(api_key, path)
         supplemental["hotfixes"] = hotfixes
-        supplemental["serverHotfixes"] = KNOWN_SERVER_HOTFIXES
         supplemental["meta"]["hotfixEndpoints"] = list(HOTFIX_ENDPOINTS.values())
-        supplemental["meta"]["refreshedAtUtc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     with SUPPLEMENTAL_OUTPUT.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("-- GENERATED from the ForeverDB API.\n")
         handle.write("-- Source: https://foreverdb.net/developers\n")

@@ -116,9 +116,15 @@ def main() -> int:
         shutil.rmtree(BUILD_ROOT)
     BUILD_ROOT.mkdir(parents=True)
 
+    old_extended_supplemental = None
     with tempfile.TemporaryDirectory(prefix="foreverpath-old-") as old_dir:
         old_addon = extract_archive(SOURCE_ARCHIVE, Path(old_dir))
         old_digest = dataset_digest(old_addon)
+        old_supplemental = old_addon / DATA_ROOT / "ForeverDBSupplemental.lua"
+        if old_supplemental.is_file():
+            old_bytes = old_supplemental.read_bytes()
+            if b'"profile"' in old_bytes and b'"extended"' in old_bytes[:2048]:
+                old_extended_supplemental = old_bytes
 
     extracted_root = BUILD_ROOT / "source"
     extracted_addon = extract_archive(SOURCE_ARCHIVE, extracted_root)
@@ -134,6 +140,14 @@ def main() -> int:
     if args.extended:
         import_command.append("--extended")
     subprocess.run(import_command, cwd=REPO_ROOT, env=env, check=True)
+
+    # A fast core refresh must never silently downgrade a package that already
+    # contains the optional extended snapshot. The next explicit extended run
+    # will replace it with fresh item/spell/vendor data.
+    if not args.extended and old_extended_supplemental:
+        supplemental_path = STAGED_ADDON / DATA_ROOT / "ForeverDBSupplemental.lua"
+        supplemental_path.write_bytes(old_extended_supplemental)
+        print("Preserved the existing extended ForeverDB supplemental snapshot during core refresh.")
 
     new_digest = dataset_digest(STAGED_ADDON)
     data_build = read_build(STAGED_ADDON)
